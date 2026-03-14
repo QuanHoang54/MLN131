@@ -19,6 +19,11 @@ import {
   Clock,
   Heart,
   Users,
+  Star,
+  Layers,
+  Handshake,
+  TrendingUp,
+  Building2,
 } from "lucide-react"
 import { cn } from "@/lib/utils"
 
@@ -81,25 +86,25 @@ const lessonsData = [
           name: "Giai cấp Công nhân",
           description:
             "Là lực lượng đi đầu trong sự nghiệp công nghiệp hóa, hiện đại hóa đất nước. Số lượng và chất lượng ngày càng tăng.",
-          color: "bg-blue-50 border-l-blue-500",
+          color: "bg-blue-900/30 border-l-blue-400",
         },
         {
           name: "Giai cấp Nông dân",
           description:
             "Là lực lượng to lớn trong công cuộc xây dựng và bảo vệ Tổ quốc, là chủ thể của quá trình phát triển nông nghiệp, nông thôn.",
-          color: "bg-green-50 border-l-green-500",
+          color: "bg-green-900/30 border-l-green-400",
         },
         {
           name: "Đội ngũ Trí thức",
           description:
             "Là lực lượng lao động sáng tạo đặc biệt quan trọng, đóng vai trò then chốt trong phát triển khoa học - công nghệ và văn hóa.",
-          color: "bg-purple-50 border-l-purple-500",
+          color: "bg-purple-900/30 border-l-purple-400",
         },
         {
           name: "Đội ngũ Doanh nhân",
           description:
             "Là lực lượng mới nổi, đóng vai trò quan trọng trong phát triển kinh tế thị trường định hướng xã hội chủ nghĩa.",
-          color: "bg-amber-50 border-l-amber-500",
+          color: "bg-amber-900/30 border-l-amber-400",
         },
       ],
     },
@@ -299,121 +304,6 @@ function Header({
   )
 }
 
-function HomeTab({ setActiveTab }: { setActiveTab: (tab: string) => void }) {
-  return (
-    <div className="animate-fade-in-up bg-fixed bg-cover bg-center bg-no-repeat" style={{ backgroundImage: 'url(/Tu-tuong-Ho-Chi-Minh-_5-1-1024x641.jpg)' }}>
-      {/* Red Overlay for full page */}
-      <div className="bg-red-900/80 min-h-screen">
-        {/* Hero Section */}
-        <section className="py-20 sm:py-28 px-4">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-4 leading-tight text-balance uppercase drop-shadow-lg">
-              LIÊN MINH CÔNG – NÔNG – TRÍ THỨC TRONG LÝ LUẬN MÁC – LÊNIN VÀ VAI TRÒ CỦA KINH TẾ TƯ NHÂN Ở VIỆT NAM HIỆN NAY – KẾ THỪA HAY THAY ĐỔI?
-            </h2>
-            <p className="text-lg sm:text-xl text-white/90 mb-8 max-w-2xl mx-auto text-pretty drop-shadow">
-              Tìm hiểu về cơ cấu xã hội - giai cấp và liên minh giai cấp, tầng lớp trong thời kỳ quá độ lên chủ nghĩa xã hội ở Việt Nam
-            </p>
-            <button
-              onClick={() => setActiveTab("library")}
-              className="inline-flex items-center gap-2 bg-amber-400 hover:bg-amber-300 text-red-900 font-semibold px-8 py-4 rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1"
-            >
-              Bắt đầu khám phá
-              <ArrowRight className="w-5 h-5" />
-            </button>
-          </div>
-        </section>
-
-
-        {/* Highlights Section with Glassmorphism */}
-        <section className="py-16 px-4">
-          <div className="max-w-6xl mx-auto">
-            <h3 className="text-2xl sm:text-3xl font-bold text-white text-center mb-12">
-              Nội dung chính
-            </h3>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <HighlightCard
-                icon={Lightbulb}
-                title="Lý luận cốt lõi"
-                description="Tìm hiểu cơ cấu xã hội - giai cấp và các quy luật biến đổi theo quan điểm Mác - Lênin"
-                borderColor="border-t-blue-400"
-                iconBg="bg-blue-500/30"
-                iconColor="text-blue-300"
-              />
-              <HighlightCard
-                icon={MapPin}
-                title="Thực tiễn Việt Nam"
-                description="Phân tích đặc điểm các giai tầng và mối quan hệ liên minh trong xã hội Việt Nam hiện đại"
-                borderColor="border-t-emerald-400"
-                iconBg="bg-emerald-500/30"
-                iconColor="text-emerald-300"
-              />
-              <HighlightCard
-                icon={HelpCircle}
-                title="Giải đáp mâu thuẫn"
-                description="Làm rõ vì sao phát triển kinh tế tư nhân không mâu thuẫn với nguyên lý Mác - Lênin"
-                borderColor="border-t-amber-400"
-                iconBg="bg-amber-500/30"
-                iconColor="text-amber-300"
-              />
-            </div>
-          </div>
-        </section>
-
-        {/* Group Info Card - Bottom of Home with Glassmorphism */}
-        <section className="py-12 px-4">
-          <div className="max-w-3xl mx-auto">
-            <div className="bg-white/10 backdrop-blur-md rounded-2xl p-8 shadow-xl border border-white/20">
-              <div className="text-center mb-6">
-                <h3 className="text-2xl sm:text-3xl font-bold text-white mb-2">
-                  THÔNG TIN NHÓM
-                </h3>
-                <div className="w-16 h-1 bg-amber-400 mx-auto rounded-full"></div>
-              </div>
-
-              <div className="space-y-4">
-                <div className="grid grid-cols-2 gap-4">
-                  <div className="bg-white/10 rounded-xl p-4 text-center border border-white/10">
-                    <p className="text-sm text-white/70 mb-1">Mã Lớp</p>
-                    <p className="text-lg font-bold text-white">SP26_MLN131_IA1807</p>
-                  </div>
-                  <div className="bg-white/10 rounded-xl p-4 text-center border border-white/10">
-                    <p className="text-sm text-white/70 mb-1">Tên Môn</p>
-                    <p className="text-lg font-bold text-white">MLN131</p>
-                  </div>
-                </div>
-
-                <div className="bg-gradient-to-r from-red-600/40 to-amber-600/40 rounded-xl p-5 text-center border border-white/10">
-                  <p className="text-sm text-white/70 mb-2">Tên Nhóm</p>
-                  <p className="text-2xl font-bold text-amber-300">Nhóm 6</p>
-                  <p className="text-sm text-white/70 mt-2">Năm 2026</p>
-                </div>
-
-                <div className="pt-4 border-t border-white/20">
-                  <p className="text-sm text-white/70 mb-3 text-center">Thành Viên</p>
-                  <div className="flex flex-wrap justify-center gap-3">
-                    <span className="px-5 py-2.5 bg-blue-500/30 text-blue-200 rounded-full text-sm font-medium flex items-center gap-2 border border-blue-400/30">
-                      <Users className="w-4 h-4" />
-                      Nguyễn Văn Cường
-                    </span>
-                    <span className="px-5 py-2.5 bg-green-500/30 text-green-200 rounded-full text-sm font-medium flex items-center gap-2 border border-green-400/30">
-                      <Users className="w-4 h-4" />
-                      Nguyễn Hoàng Minh
-                    </span>
-                    <span className="px-5 py-2.5 bg-purple-500/30 text-purple-200 rounded-full text-sm font-medium flex items-center gap-2 border border-purple-400/30">
-                      <Users className="w-4 h-4" />
-                      Nguyễn Hoàng Quân
-                    </span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-      </div>
-    </div>
-  )
-}
-
 function HighlightCard({
   icon: Icon,
   title,
@@ -449,8 +339,6 @@ function HighlightCard({
     </div>
   )
 }
-
-// ==================== LIBRARY TAB (SCROLLTELLING) ====================
 
 function ScrollBlock({
   children,
@@ -493,44 +381,6 @@ function ScrollBlock({
       style={{ transitionDelay: `${index * 100}ms` }}
     >
       {children}
-    </div>
-  )
-}
-
-function LibraryTab() {
-  return (
-    <div className="animate-fade-in-up bg-fixed bg-cover bg-center bg-no-repeat min-h-screen" style={{ backgroundImage: 'url(/tranhcodong_giaoduc_so1-800x445.jpg)' }}>
-      {/* Red Overlay */}
-      <div className="bg-red-950/85 min-h-screen">
-        <div className="py-8 px-4">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="text-2xl sm:text-3xl font-bold text-white text-center mb-4">
-              Nội dung bài giảng
-            </h2>
-
-            {/* Scroll Instruction */}
-            <div className="text-center mb-12">
-              <p className="text-white/70 mb-2">Hãy cuộn trang từ từ xuống dưới</p>
-              <ChevronDown className="w-6 h-6 text-white/50 mx-auto animate-bounce" />
-            </div>
-
-            <div className="space-y-12">
-              {lessonsData.map((lesson, index) => (
-                <ScrollBlock key={lesson.id} index={index}>
-                  <div className="bg-black/30 backdrop-blur-md border border-white/20 shadow-2xl rounded-xl overflow-hidden">
-                    <div className="bg-gradient-to-r from-red-700 to-red-600 p-5">
-                      <h3 className="text-white font-bold text-lg">{lesson.title}</h3>
-                    </div>
-                    <div className="p-6">
-                      <LessonContent lesson={lesson} />
-                    </div>
-                  </div>
-                </ScrollBlock>
-              ))}
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
   )
 }
@@ -650,7 +500,227 @@ function LessonContent({ lesson }: { lesson: (typeof lessonsData)[0] }) {
   )
 }
 
-// ==================== MINIGAME TAB (TREASURE CHEST) ====================
+// ==================== TABS ====================
+
+function HomeTab({ setActiveTab }: { setActiveTab: (tab: string) => void }) {
+  const handleNavigation = (tab: string) => {
+    setActiveTab(tab)
+  }
+
+  return (
+    <div className="animate-fade-in-up">
+      {/* Full Background Container with Red Overlay - Hero + Highlights + Group Info */}
+      <div className="bg-[url('/Tu-tuong-Ho-Chi-Minh-_5-1-1024x641.jpg')] bg-cover bg-center bg-fixed bg-no-repeat min-h-screen">
+        <div className="bg-red-950/80">
+          {/* Hero Section */}
+          <section className="py-20 sm:py-28 px-4">
+            <div className="max-w-4xl mx-auto text-center">
+              <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-4 leading-tight text-balance uppercase drop-shadow-lg">
+                LIÊN MINH CÔNG – NÔNG – TRÍ THỨC TRONG LÝ LUẬN MÁC – LÊNIN VÀ VAI TRÒ CỦA KINH TẾ TƯ NHÂN Ở VIỆT NAM HIỆN NAY – KẾ THỪA HAY THAY ĐỔI?
+              </h2>
+              <p className="text-lg sm:text-xl text-white/90 mb-8 max-w-2xl mx-auto text-pretty drop-shadow">
+                Tìm hiểu về cơ cấu xã hội - giai cấp và liên minh giai cấp, tầng lớp trong thời kỳ quá độ lên chủ nghĩa xã hội ở Việt Nam
+              </p>
+              <button
+                onClick={() => setActiveTab("library")}
+                className="inline-flex items-center gap-2 bg-amber-400 hover:bg-amber-300 text-red-900 font-semibold px-8 py-4 rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1"
+              >
+                Bắt đầu khám phá
+                <ArrowRight className="w-5 h-5" />
+              </button>
+            </div>
+          </section>
+
+          {/* Course Overview Section - 4 Cards with Glassmorphism */}
+          <section className="py-16 px-4">
+            <div className="max-w-5xl mx-auto">
+              {/* Section Title */}
+              <h3 className="text-3xl sm:text-4xl font-bold text-center mb-12 text-white drop-shadow-lg">
+                NỘI DUNG CHÍNH CỦA CHỦ ĐỀ
+              </h3>
+
+              {/* 4 Cards Grid */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {/* Card 1: Cơ cấu xã hội - giai cấp */}
+                <div className="bg-white/10 backdrop-blur-md rounded-2xl p-6 shadow-xl border border-white/20 hover:bg-white/15 transition-all duration-300">
+                  <div className="flex items-start gap-4">
+                    <div className="w-12 h-12 rounded-xl bg-blue-500/30 flex items-center justify-center flex-shrink-0 border border-blue-400/30">
+                      <Layers className="w-6 h-6 text-blue-300" />
+                    </div>
+                    <div>
+                      <h4 className="text-lg font-bold text-white mb-2">Cơ cấu xã hội - giai cấp</h4>
+                      <p className="text-white/70 text-sm leading-relaxed">
+                        Khái niệm, vị trí và 3 quy luật biến đổi tất yếu của cơ cấu xã hội - giai cấp gắn liền với sự chuyển dịch kinh tế trong thời kỳ quá độ.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Card 2: Lý luận về Liên minh giai cấp */}
+                <div className="bg-white/10 backdrop-blur-md rounded-2xl p-6 shadow-xl border border-white/20 hover:bg-white/15 transition-all duration-300">
+                  <div className="flex items-start gap-4">
+                    <div className="w-12 h-12 rounded-xl bg-emerald-500/30 flex items-center justify-center flex-shrink-0 border border-emerald-400/30">
+                      <Handshake className="w-6 h-6 text-emerald-300" />
+                    </div>
+                    <div>
+                      <h4 className="text-lg font-bold text-white mb-2">Lý luận về Liên minh giai cấp</h4>
+                      <p className="text-white/70 text-sm leading-relaxed">
+                        Tính tất yếu khách quan của khối liên minh trên cả hai phương diện chính trị (giành chính quyền) và kinh tế (xây dựng đất nước).
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Card 3: Thực tiễn tại Việt Nam */}
+                <div className="bg-white/10 backdrop-blur-md rounded-2xl p-6 shadow-xl border border-white/20 hover:bg-white/15 transition-all duration-300">
+                  <div className="flex items-start gap-4">
+                    <div className="w-12 h-12 rounded-xl bg-amber-500/30 flex items-center justify-center flex-shrink-0 border border-amber-400/30">
+                      <MapPin className="w-6 h-6 text-amber-300" />
+                    </div>
+                    <div>
+                      <h4 className="text-lg font-bold text-white mb-2">Thực tiễn tại Việt Nam</h4>
+                      <p className="text-white/70 text-sm leading-relaxed">
+                        Đặc điểm đa dạng, đan xen của các giai tầng (Công - Nông - Trí thức - Doanh nhân) và 5 phương hướng củng cố khối đại đoàn kết.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Card 4: Kinh tế tư nhân - Kế thừa & Sáng tạo */}
+                <div className="bg-white/10 backdrop-blur-md rounded-2xl p-6 shadow-xl border border-white/20 hover:bg-white/15 transition-all duration-300">
+                  <div className="flex items-start gap-4">
+                    <div className="w-12 h-12 rounded-xl bg-purple-500/30 flex items-center justify-center flex-shrink-0 border border-purple-400/30">
+                      <TrendingUp className="w-6 h-6 text-purple-300" />
+                    </div>
+                    <div>
+                      <h4 className="text-lg font-bold text-white mb-2">Kinh tế tư nhân - Kế thừa & Sáng tạo</h4>
+                      <p className="text-white/70 text-sm leading-relaxed">
+                        Sự bùng nổ của doanh nhân không mâu thuẫn với lý luận Mác - Lênin. Việt Nam mở rộng nội hàm liên minh, chuyển mâu thuẫn thành động lực phát triển chung.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+
+      {/* Footer */}
+      <footer className="bg-red-950 border-t-4 border-yellow-500 pt-12 pb-6 px-4">
+        <div className="max-w-6xl mx-auto">
+          {/* 4 Column Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+            {/* Column 1 - Giới thiệu */}
+            <div>
+              <div className="flex items-center gap-2 mb-4">
+                <Star className="w-6 h-6 text-yellow-500" />
+                <h3 className="text-xl font-bold text-yellow-500">CHỦ NGHĨA XÃ HỘI KHOA HỌC</h3>
+              </div>
+              <p className="text-gray-200 text-sm leading-relaxed">
+                Trang web giáo dục tìm hiểu về Liên minh giai cấp và Kinh tế tư nhân ở Việt Nam, được xây dựng bởi sinh viên FPT University với mục đích học tập và chia sẻ kiến thức.
+              </p>
+            </div>
+
+            {/* Column 2 - Thông tin nhóm */}
+            <div>
+              <h3 className="text-lg font-bold text-white mb-4 border-b border-yellow-500/50 pb-2">Thông Tin Nhóm</h3>
+              <ul className="space-y-2 text-gray-200 text-sm">
+                <li><span className="text-yellow-400">Nhóm:</span> Nhóm 6</li>
+                <li><span className="text-yellow-400">Lớp:</span> SP26_MLN131_IA1807</li>
+                <li><span className="text-yellow-400">Môn học:</span> MLN131 - Chủ Nghĩa Xã Hội Khoa Học</li>
+                <li className="pt-2"><span className="text-yellow-400">Thành viên:</span></li>
+                <li className="pl-4">• Nguyễn Văn Cường</li>
+                <li className="pl-4">• Nguyễn Hoàng Minh</li>
+                <li className="pl-4">• Nguyễn Hoàng Quân</li>
+              </ul>
+            </div>
+
+            {/* Column 3 - Liên kết */}
+            <div>
+              <h3 className="text-lg font-bold text-white mb-4 border-b border-yellow-500/50 pb-2">Liên Kết</h3>
+              <ul className="space-y-2">
+                <li>
+                  <button onClick={() => handleNavigation("home")} className="text-gray-200 hover:text-yellow-400 flex items-center gap-2 transition-colors">
+                    <ArrowRight className="w-4 h-4" /> Trang Chủ
+                  </button>
+                </li>
+                <li>
+                  <button onClick={() => handleNavigation("library")} className="text-gray-200 hover:text-yellow-400 flex items-center gap-2 transition-colors">
+                    <ArrowRight className="w-4 h-4" /> Bài Giảng
+                  </button>
+                </li>
+                <li>
+                  <button onClick={() => handleNavigation("minigame")} className="text-gray-200 hover:text-yellow-400 flex items-center gap-2 transition-colors">
+                    <ArrowRight className="w-4 h-4" /> Minigame
+                  </button>
+                </li>
+              </ul>
+            </div>
+
+            {/* Column 4 - CTA Buttons */}
+            <div>
+              <h3 className="text-lg font-bold text-white mb-4 border-b border-yellow-500/50 pb-2">Hành Động</h3>
+              <div className="space-y-3">
+                <button onClick={() => handleNavigation("library")} className="w-full bg-yellow-400 hover:bg-yellow-300 text-red-900 font-bold py-3 px-4 rounded-md transition-colors flex items-center justify-center gap-2">
+                  <BookOpen className="w-5 h-5" /> XEM BÀI GIẢNG
+                </button>
+                <button onClick={() => handleNavigation("minigame")} className="w-full bg-yellow-400 hover:bg-yellow-300 text-red-900 font-bold py-3 px-4 rounded-md transition-colors flex items-center justify-center gap-2">
+                  <Gamepad2 className="w-5 h-5" /> CHƠI MINIGAME
+                </button>
+              </div>
+            </div>
+          </div>
+
+          {/* Copyright */}
+          <div className="border-t border-gray-800 pt-6 text-center">
+            <p className="text-gray-400 text-sm">
+              © 2026 - Nhóm 6 - Lớp SP26_MLN131_IA1807. Được tạo ra với sự tôn trọng và tinh thần học hỏi. Website mang tính chất học tập và nghiên cứu.
+            </p>
+          </div>
+        </div>
+      </footer>
+    </div>
+  )
+}
+
+function LibraryTab() {
+  return (
+    <div className="animate-fade-in-up bg-fixed bg-cover bg-center bg-no-repeat min-h-screen" style={{ backgroundImage: 'url(/tranhcodong_giaoduc_so1-800x445.jpg)' }}>
+      {/* Red Overlay */}
+      <div className="bg-red-950/85 min-h-screen">
+        <div className="py-8 px-4">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-2xl sm:text-3xl font-bold text-white text-center mb-4">
+              Nội dung bài giảng
+            </h2>
+
+            {/* Scroll Instruction */}
+            <div className="text-center mb-12">
+              <p className="text-white/70 mb-2">Hãy cuộn trang từ từ xuống dưới</p>
+              <ChevronDown className="w-6 h-6 text-white/50 mx-auto animate-bounce" />
+            </div>
+
+            <div className="space-y-12">
+              {lessonsData.map((lesson, index) => (
+                <ScrollBlock key={lesson.id} index={index}>
+                  <div className="bg-black/30 backdrop-blur-md border border-white/20 shadow-2xl rounded-xl overflow-hidden">
+                    <div className="bg-gradient-to-r from-red-700 to-red-600 p-5">
+                      <h3 className="text-white font-bold text-lg">{lesson.title}</h3>
+                    </div>
+                    <div className="p-6">
+                      <LessonContent lesson={lesson} />
+                    </div>
+                  </div>
+                </ScrollBlock>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
 
 type GameState = "playing" | "won" | "lost"
 type LossReason = "quiz" | "password" | null
