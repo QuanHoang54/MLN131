@@ -27,105 +27,134 @@ import { cn } from "@/lib/utils"
 const lessonsData = [
   {
     id: 1,
-    title: "Phần 1: Khái niệm và vị trí của cơ cấu xã hội - giai cấp",
+    title: "Phần I: Cơ cấu xã hội - giai cấp trong thời kỳ quá độ lên chủ nghĩa xã hội",
     content: {
-      intro:
-        "Cơ cấu xã hội - giai cấp là sự phân chia xã hội thành các giai cấp dựa trên vị trí, vai trò trong hệ thống sản xuất xã hội. Đây là loại hình cơ cấu có vị trí quyết định nhất, chi phối các loại hình cơ cấu khác.",
-      rules: [
+      sections: [
         {
-          title: "Quy luật 1: Về quan hệ sở hữu tư liệu sản xuất",
-          description:
-            "Đây là quan hệ cơ bản, quyết định địa vị của các giai cấp trong xã hội. Giai cấp nào nắm tư liệu sản xuất chủ yếu thì giai cấp đó giữ vai trò thống trị.",
+          title: "1. Khái niệm và vị trí của cơ cấu xã hội - giai cấp",
+          items: [
+            "Cơ cấu xã hội (Nghĩa rộng): Bao gồm cơ cấu dân cư, nghề nghiệp, dân tộc, tôn giáo và giai cấp",
+            "Cơ cấu xã hội - giai cấp (Nghĩa hẹp): Hệ thống các giai cấp, tầng lớp được hình thành qua: Sở hữu TLSX, Tổ chức quản lý sản xuất, Địa vị chính trị - xã hội",
+            "Vị trí: Cơ cấu giai cấp có vị trí quan trọng hàng đầu, chi phối các loại hình cơ cấu khác"
+          ]
         },
         {
-          title: "Quy luật 2: Về quan hệ tổ chức quản lý sản xuất",
-          description:
-            "Phản ánh vị trí, vai trò của các giai cấp trong việc tổ chức, điều hành quá trình sản xuất và phân phối sản phẩm lao động.",
-        },
-        {
-          title: "Quy luật 3: Về quan hệ phân phối thu nhập",
-          description:
-            "Là hệ quả trực tiếp của quan hệ sở hữu và tổ chức quản lý, thể hiện mức độ hưởng thụ của các giai cấp từ thành quả lao động xã hội.",
-        },
-      ],
-    },
+          title: "2. Sự biến đổi có tính quy luật của cơ cấu xã hội - giai cấp",
+          items: [
+            "Quy luật 1: Cơ cấu giai cấp biến đổi gắn liền với cơ cấu kinh tế - Phương thức sản xuất quyết định cơ cấu giai cấp",
+            "Quy luật 2: Biến đổi phức tạp, đa dạng - Xuất hiện các tầng lớp xã hội mới (doanh nhân, tiểu chủ...)",
+            "Quy luật 3: Biến đổi trong mối quan hệ vừa đấu tranh, vừa liên minh - Tiến tới xóa bỏ bất bình đẳng, xích lại gần nhau"
+          ]
+        }
+      ]
+    }
   },
   {
     id: 2,
-    title: "Phần 2: Liên minh giai cấp, tầng lớp",
+    title: "Phần II: Liên minh giai cấp, tầng lớp trong thời kỳ quá độ",
     content: {
-      intro:
-        "Liên minh giai cấp là sự hợp tác, đoàn kết giữa các giai cấp và tầng lớp trong xã hội vì những mục tiêu chung nhất định.",
-      highlights: [
+      sections: [
         {
-          label: "Tính tất yếu về Chính trị",
-          description:
-            "Liên minh giai cấp nhằm tập hợp lực lượng, tạo sức mạnh tổng hợp để giành và giữ chính quyền, bảo vệ thành quả cách mạng, xây dựng chế độ mới.",
+          title: "1. Khái niệm liên minh giai cấp, tầng lớp",
+          items: [
+            "Là sự liên kết, hợp tác, hỗ trợ giữa các giai cấp, tầng lớp nhằm thực hiện nhu cầu và lợi ích chung",
+            "Tạo động lực thực hiện thắng lợi mục tiêu của chủ nghĩa xã hội"
+          ]
         },
         {
-          label: "Tính tất yếu về Kinh tế",
-          description:
-            "Liên minh giai cấp là yêu cầu khách quan của quá trình công nghiệp hóa, hiện đại hóa, phát triển kinh tế hàng hóa nhiều thành phần, hội nhập quốc tế.",
+          title: "2. Tính tất yếu của khối liên minh",
+          items: [
+            "Về Chính trị: Tập hợp lực lượng tiến hành cách mạng XHCN, xây dựng nền tảng cơ sở xã hội vững chắc",
+            "Về Kinh tế: Các lĩnh vực kinh tế gắn chặt với nhau, thỏa mãn lợi ích chung, xây dựng cơ sở vật chất"
+          ]
         },
-      ],
-      note: "Trong thời kỳ quá độ lên chủ nghĩa xã hội, liên minh công - nông - trí thức là nền tảng của khối đại đoàn kết toàn dân tộc.",
-    },
+        {
+          title: "3. Tầm quan trọng của liên minh giai cấp",
+          items: [
+            "Liên minh Công - Nông - Trí là điều kiện đảm bảo vai trò lãnh đạo của giai cấp công nhân",
+            "Là điều kiện quyết định thắng lợi trong đấu tranh giành chính quyền và xây dựng xã hội mới",
+            "Dưới sự lãnh đạo của Đảng Cộng sản, tạo sức mạnh tổng hợp đảm bảo thắng lợi cách mạng XHCN"
+          ]
+        }
+      ]
+    }
   },
   {
     id: 3,
-    title: "Phần 3: Cơ cấu & Liên minh ở Việt Nam hiện nay",
+    title: "Phần III: Cơ cấu xã hội - giai cấp và liên minh ở Việt Nam",
     content: {
-      intro:
-        "Cơ cấu xã hội - giai cấp ở Việt Nam đang có những biến đổi sâu sắc trong thời kỳ đổi mới và hội nhập quốc tế.",
-      classes: [
+      sections: [
         {
-          name: "Giai cấp Công nhân",
-          description:
-            "Là lực lượng đi đầu trong sự nghiệp công nghiệp hóa, hiện đại hóa đất nước. Số lượng và chất lượng ngày càng tăng.",
-          color: "bg-blue-900/30 border-l-blue-400",
+          title: "1. Đặc điểm cơ cấu xã hội - giai cấp ở Việt Nam",
+          items: [
+            "Biến đổi gắn liền với cơ cấu kinh tế: Từ kinh tế kế hoạch hóa tập trung sang kinh tế thị trường định hướng XHCN",
+            "Tính đa dạng và đan xen: Nhiều thành phần kinh tế dẫn đến đa dạng tầng lớp; vừa hợp tác, vừa đấu tranh",
+            "Sự biến đổi trong nội bộ từng giai cấp: Xuất hiện nhiều nhóm xã hội mới, đặc biệt đội ngũ doanh nhân"
+          ]
         },
         {
-          name: "Giai cấp Nông dân",
-          description:
-            "Là lực lượng to lớn trong công cuộc xây dựng và bảo vệ Tổ quốc, là chủ thể của quá trình phát triển nông nghiệp, nông thôn.",
-          color: "bg-green-900/30 border-l-green-400",
+          title: "2. Các giai cấp, tầng lớp trong cơ cấu xã hội Việt Nam",
+          items: [
+            "Giai cấp Công nhân: Lực lượng đi đầu, nòng cốt trong khối liên minh",
+            "Giai cấp Nông dân: Lực lượng đông đảo, vị trí chiến lược trong phát triển nông nghiệp",
+            "Đội ngũ Trí thức: Lực lượng lao động sáng tạo đặc biệt quan trọng trong CNH, HĐH",
+            "Đội ngũ Doanh nhân: Phát triển nhanh, huy động nguồn lực, tạo việc làm, đóng góp tăng trưởng"
+          ]
         },
         {
-          name: "Đội ngũ Trí thức",
-          description:
-            "Là lực lượng lao động sáng tạo đặc biệt quan trọng, đóng vai trò then chốt trong phát triển khoa học - công nghệ và văn hóa.",
-          color: "bg-purple-900/30 border-l-purple-400",
+          title: "3. Nội dung liên minh ở Việt Nam",
+          items: [
+            "Chính trị: Giữ vững bản chất giai cấp công nhân, tăng cường lãnh đạo của Đảng",
+            "Kinh tế: Đẩy mạnh hợp tác Công - Nông - Khoa học; thực hiện liên kết '4 nhà'",
+            "Văn hóa - Xã hội: Xây dựng văn hóa tiên tiến, nâng cao dân trí, thực hiện an sinh xã hội"
+          ]
         },
         {
-          name: "Đội ngũ Doanh nhân",
-          description:
-            "Là lực lượng mới nổi, đóng vai trò quan trọng trong phát triển kinh tế thị trường định hướng xã hội chủ nghĩa.",
-          color: "bg-amber-900/30 border-l-amber-400",
-        },
-      ],
-    },
+          title: "4. Năm phương hướng cơ bản",
+          items: [
+            "1. Đẩy mạnh CNH, HĐH; giải quyết tốt mối quan hệ tăng trưởng và công bằng xã hội",
+            "2. Xây dựng chính sách xã hội tổng thể cho từng giai tầng",
+            "3. Tạo sự đồng thuần, phát huy tinh thần đoàn kết thống nhất",
+            "4. Hoàn thiện thể chế KT thị trường định hướng XHCN",
+            "5. Đổi mới hoạt động của Đảng, Nhà nước, Mặt trận Tổ quốc"
+          ]
+        }
+      ]
+    }
   },
   {
     id: 4,
-    title: "Phần 4: Kinh tế tư nhân - Kế thừa hay thay đổi?",
+    title: "Phần IV: Kinh tế tư nhân - Kế thừa hay Thay đổi?",
     content: {
-      intro:
-        "Việc phát triển kinh tế tư nhân ở Việt Nam KHÔNG mâu thuẫn với lý luận Mác - Lênin, mà là sự vận dụng sáng tạo vào điều kiện cụ thể của đất nước.",
-      inheritance: [
-        "Khẳng định vai trò lãnh đạo của Đảng Cộng sản",
-        "Duy trì sở hữu toàn dân về đất đai và tài nguyên quan trọng",
-        "Kinh tế nhà nước giữ vai trò chủ đạo",
-        "Mục tiêu xây dựng xã hội công bằng, dân chủ, văn minh",
-      ],
-      innovation: [
-        "Phát triển kinh tế thị trường định hướng XHCN",
-        "Thừa nhận và khuyến khích kinh tế tư nhân là động lực quan trọng",
-        "Hội nhập kinh tế quốc tế sâu rộng",
-        "Đa dạng hóa hình thức sở hữu và phân phối",
-      ],
-      conclusion:
-        "Đây là sự kế thừa biện chứng: giữ vững những nguyên lý cốt lõi, đồng thời sáng tạo, đổi mới để phù hợp với thực tiễn Việt Nam và xu thế thời đại.",
-    },
+      sections: [
+        {
+          title: "1. Sự bùng nổ của kinh tế tư nhân và tầng lớp doanh nhân",
+          items: [
+            "Bối cảnh: Chuyển đổi sang kinh tế thị trường định hướng XHCN",
+            "Quy luật: Thay đổi cơ cấu kinh tế -> Biến đổi cơ cấu xã hội - giai cấp",
+            "Thực tiễn: Xuất hiện đội ngũ doanh nhân; Kinh tế tư nhân trở thành 'một động lực quan trọng'"
+          ]
+        },
+        {
+          title: "2. Kinh tế tư nhân có MÂU THUẪN với lý luận Mác - Lênin?",
+          items: [
+            "Khẳng định: HOÀN TOÀN KHÔNG mâu thuẫn",
+            "Cơ sở 1: Tôn trọng quy luật Cơ sở hạ tầng quyết định kiến trúc thượng tầng",
+            "Cơ sở 2: Phù hợp với tính đan xen phức tạp của thời kỳ quá độ",
+            "Cơ sở 3: Phù hợp với mục tiêu Liên minh về kinh tế của V.I.Lênin"
+          ]
+        },
+        {
+          title: "3. Điểm kế thừa và Sáng tạo đặc thù của Việt Nam",
+          items: [
+            "KẾ THỪA: Liên minh Công - Nông - Trí thức vẫn là nền tảng; Đảng Cộng sản giữ vai trò lãnh đạo tuyệt đối",
+            "SÁNG TẠO: Mở rộng nội hàm liên minh - Chuyển từ đấu tranh chính trị sang hợp tác kinh tế (Liên kết 4 nhà)",
+            "SÁNG TẠO: Chuyển hóa mâu thuẫn thành động lực phát triển",
+            "SÁNG TẠO: Đồng nhất lợi ích - Lợi ích hợp pháp của doanh nhân thống nhất với mục tiêu 'Dân giàu, nước mạnh'"
+          ]
+        }
+      ]
+    }
   },
 ]
 
@@ -351,116 +380,34 @@ function ScrollBlock({
 }
 
 function LessonContent({ lesson }: { lesson: (typeof lessonsData)[0] }) {
-  const content = lesson.content
+  const content = lesson.content as any
 
   return (
-    <div className="space-y-4">
-      <p className="text-white/90 leading-relaxed">{content.intro}</p>
-
-      {"rules" in content && content.rules && (
-        <div className="space-y-3">
-          {content.rules.map((rule, idx) => (
-            <div
-              key={idx}
-              className="bg-blue-900/30 border-l-4 border-l-blue-400 rounded-r-xl p-4"
-            >
-              <h5 className="font-bold text-blue-300 mb-1">{rule.title}</h5>
-              <p className="text-blue-100/80 text-sm leading-relaxed">
-                {rule.description}
-              </p>
-            </div>
-          ))}
-        </div>
-      )}
-
-      {"highlights" in content && content.highlights && (
-        <div className="space-y-3">
-          {content.highlights.map((hl, idx) => (
-            <div
-              key={idx}
-              className="bg-emerald-900/30 border-l-4 border-l-emerald-400 rounded-r-xl p-4"
-            >
-              <h5 className="font-bold text-emerald-300 mb-1">{hl.label}</h5>
-              <p className="text-emerald-100/80 text-sm leading-relaxed">
-                {hl.description}
-              </p>
-            </div>
-          ))}
-          {content.note && (
-            <div className="bg-amber-900/30 rounded-xl p-4 mt-4 border border-amber-500/30">
-              <p className="text-amber-200 text-sm font-medium">{content.note}</p>
-            </div>
-          )}
-        </div>
-      )}
-
-      {"classes" in content && content.classes && (
-        <div className="space-y-3">
-          {content.classes.map((cls, idx) => (
-            <div
-              key={idx}
-              className={cn("border-l-4 rounded-r-xl p-4 bg-black/20", cls.color)}
-            >
-              <h5 className="font-bold text-white mb-1">{cls.name}</h5>
-              <p className="text-white/80 text-sm leading-relaxed">
-                {cls.description}
-              </p>
-            </div>
-          ))}
-        </div>
-      )}
-
-      {"inheritance" in content && content.inheritance && (
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div className="bg-red-900/30 rounded-xl p-4 border border-red-500/30">
-            <h5 className="font-bold text-red-300 mb-3 flex items-center gap-2">
-              <span className="w-6 h-6 bg-red-700 rounded-full flex items-center justify-center text-xs text-white">
-                1
-              </span>
-              Điểm kế thừa
-            </h5>
-            <ul className="space-y-2">
-              {content.inheritance.map((item, idx) => (
-                <li
-                  key={idx}
-                  className="text-red-100/80 text-sm flex items-start gap-2"
-                >
-                  <span className="text-red-400 mt-1">-</span>
-                  {item}
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div className="bg-emerald-900/30 rounded-xl p-4 border border-emerald-500/30">
-            <h5 className="font-bold text-emerald-300 mb-3 flex items-center gap-2">
-              <span className="w-6 h-6 bg-emerald-700 rounded-full flex items-center justify-center text-xs text-white">
-                2
-              </span>
-              Điểm sáng tạo
-            </h5>
-            <ul className="space-y-2">
-              {content.innovation &&
-                content.innovation.map((item, idx) => (
-                  <li
-                    key={idx}
-                    className="text-emerald-100/80 text-sm flex items-start gap-2"
+    <div className="space-y-6">
+      {content.sections && Array.isArray(content.sections) && (
+        <div className="space-y-6">
+          {content.sections.map((section: any, idx: number) => (
+            <div key={idx} className="space-y-3">
+              <h4 className="font-bold text-yellow-300 text-lg border-b border-yellow-500/30 pb-2">
+                {section.title}
+              </h4>
+              <div className="space-y-2">
+                {section.items.map((item: string, itemIdx: number) => (
+                  <div
+                    key={itemIdx}
+                    className="bg-black/20 border-l-4 border-l-blue-400 rounded-r-lg p-3"
                   >
-                    <span className="text-emerald-400 mt-1">-</span>
-                    {item}
-                  </li>
+                    <p className="text-white/90 text-sm leading-relaxed">
+                      {item}
+                    </p>
+                  </div>
                 ))}
-            </ul>
-          </div>
+              </div>
+            </div>
+          ))}
         </div>
       )}
 
-      {"conclusion" in content && content.conclusion && (
-        <div className="bg-gradient-to-r from-red-900/40 to-amber-900/40 rounded-xl p-4 mt-4 border border-white/10">
-          <p className="text-white font-medium text-sm leading-relaxed">
-            {content.conclusion}
-          </p>
-        </div>
-      )}
     </div>
   )
 }
@@ -480,8 +427,9 @@ function HomeTab({ setActiveTab }: { setActiveTab: (tab: string) => void }) {
           {/* Hero Section */}
           <section className="py-20 sm:py-28 px-4">
             <div className="max-w-4xl mx-auto text-center">
-              <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-4 leading-tight text-balance uppercase drop-shadow-lg">
-                LIÊN MINH CÔNG – NÔNG – TRÍ VÀ KINH TẾ TƯ NHÂN: KẾ THỪA HAY THAY ĐỔI?
+              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 leading-tight uppercase drop-shadow-lg">
+                <div className="mb-2">LIÊN MINH CÔNG – NÔNG – TRÍ</div>
+                <div>VÀ KINH TẾ TƯ NHÂN: KẾ THỪA HAY THAY ĐỔI?</div>
               </h2>
               <p className="text-lg sm:text-xl text-white/90 mb-8 max-w-2xl mx-auto text-pretty drop-shadow">
                 Tìm hiểu về cơ cấu xã hội - giai cấp và liên minh giai cấp, tầng lớp trong thời kỳ quá độ lên chủ nghĩa xã hội ở Việt Nam
@@ -592,7 +540,7 @@ function HomeTab({ setActiveTab }: { setActiveTab: (tab: string) => void }) {
               <h3 className="text-lg font-bold text-white mb-4 border-b border-yellow-500/50 pb-2">Thông Tin Nhóm</h3>
               <ul className="space-y-2 text-gray-200 text-sm">
                 <li><span className="text-yellow-400">Nhóm:</span> Nhóm 6</li>
-                <li><span className="text-yellow-400">Lớp:</span> SP26_MLN131_IA1807</li>
+                <li><span className="text-yellow-400">Lớp:</span> Half2_IA1807</li>
                 <li><span className="text-yellow-400">Môn học:</span> MLN131 - Chủ Nghĩa Xã Hội Khoa Học</li>
                 <li className="pt-2"><span className="text-yellow-400">Thành viên:</span></li>
                 <li className="pl-4">• Nguyễn Văn Cường</li>
@@ -640,7 +588,7 @@ function HomeTab({ setActiveTab }: { setActiveTab: (tab: string) => void }) {
           {/* Copyright */}
           <div className="border-t border-gray-800 pt-6 text-center">
             <p className="text-gray-400 text-sm">
-              © 2026 - Nhóm 6 - Lớp SP26_MLN131_IA1807. Được tạo ra với sự tôn trọng và tinh thần học hỏi. Website mang tính chất học tập và nghiên cứu.
+              © 2026 - Nhóm 6 - Lớp Half2_IA1807. Được tạo ra với sự tôn trọng và tinh thần học hỏi. Website mang tính chất học tập và nghiên cứu.
             </p>
           </div>
         </div>
