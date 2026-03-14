@@ -9,21 +9,17 @@ import {
   ChevronDown,
   CheckCircle2,
   XCircle,
-  Lightbulb,
   MapPin,
-  HelpCircle,
   RotateCcw,
   Lock,
   Unlock,
   AlertTriangle,
   Clock,
   Heart,
-  Users,
   Star,
   Layers,
   Handshake,
   TrendingUp,
-  Building2,
 } from "lucide-react"
 import { cn } from "@/lib/utils"
 
@@ -268,14 +264,19 @@ function Header({
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center gap-3">
-            <img
-              src="/fptu.png"
-              alt="FPT University"
-              className="h-10 w-auto"
-            />
-            <h1 className="text-white font-bold text-sm sm:text-lg md:text-xl truncate">
-              CHỦ NGHĨA XÃ HỘI KHOA HỌC
-            </h1>
+            <button
+              onClick={() => setActiveTab("home")}
+              className="flex items-center gap-3 hover:opacity-80 transition-opacity"
+            >
+              <img
+                src="/fptu.png"
+                alt="FPT University"
+                className="h-10 w-auto"
+              />
+              <h1 className="text-white font-bold text-sm sm:text-lg md:text-xl truncate">
+                CHỦ NGHĨA XÃ HỘI KHOA HỌC
+              </h1>
+            </button>
           </div>
           <nav className="flex items-center gap-1 sm:gap-2">
             {tabs.map((tab) => {
@@ -301,42 +302,6 @@ function Header({
         </div>
       </div>
     </header>
-  )
-}
-
-function HighlightCard({
-  icon: Icon,
-  title,
-  description,
-  borderColor,
-  iconBg,
-  iconColor,
-}: {
-  icon: React.ComponentType<{ className?: string }>
-  title: string
-  description: string
-  borderColor: string
-  iconBg: string
-  iconColor: string
-}) {
-  return (
-    <div
-      className={cn(
-        "bg-white/10 backdrop-blur-md rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-all duration-300 border-t-4 border-white/20",
-        borderColor
-      )}
-    >
-      <div
-        className={cn(
-          "w-14 h-14 rounded-xl flex items-center justify-center mb-4",
-          iconBg
-        )}
-      >
-        <Icon className={cn("w-7 h-7", iconColor)} />
-      </div>
-      <h4 className="text-xl font-bold text-white mb-3">{title}</h4>
-      <p className="text-white/80 leading-relaxed">{description}</p>
-    </div>
   )
 }
 
@@ -516,7 +481,7 @@ function HomeTab({ setActiveTab }: { setActiveTab: (tab: string) => void }) {
           <section className="py-20 sm:py-28 px-4">
             <div className="max-w-4xl mx-auto text-center">
               <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-4 leading-tight text-balance uppercase drop-shadow-lg">
-                LIÊN MINH CÔNG – NÔNG – TRÍ THỨC TRONG LÝ LUẬN MÁC – LÊNIN VÀ VAI TRÒ CỦA KINH TẾ TƯ NHÂN Ở VIỆT NAM HIỆN NAY – KẾ THỪA HAY THAY ĐỔI?
+                LIÊN MINH CÔNG – NÔNG – TRÍ VÀ KINH TẾ TƯ NHÂN: KẾ THỪA HAY THAY ĐỔI?
               </h2>
               <p className="text-lg sm:text-xl text-white/90 mb-8 max-w-2xl mx-auto text-pretty drop-shadow">
                 Tìm hiểu về cơ cấu xã hội - giai cấp và liên minh giai cấp, tầng lớp trong thời kỳ quá độ lên chủ nghĩa xã hội ở Việt Nam
@@ -686,24 +651,31 @@ function HomeTab({ setActiveTab }: { setActiveTab: (tab: string) => void }) {
 
 function LibraryTab() {
   return (
-    <div className="animate-fade-in-up bg-fixed bg-cover bg-center bg-no-repeat min-h-screen" style={{ backgroundImage: 'url(/tranhcodong_giaoduc_so1-800x445.jpg)' }}>
-      {/* Red Overlay */}
-      <div className="bg-red-950/85 min-h-screen">
+    <div className="relative min-h-screen">
+      {/* Background cố định với hiệu ứng parallax */}
+      <div
+        className="fixed inset-0 bg-[url('/On-tap-mon-chu-nghia-Mac-–-Lenin-1-1024x558.png')] bg-cover bg-center bg-no-repeat z-0"
+      />
+
+      {/* Overlay bảo vệ */}
+      <div className="relative z-10 bg-red-950/70 min-h-screen">
         <div className="py-8 px-4">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-2xl sm:text-3xl font-bold text-white text-center mb-4">
-              Nội dung bài giảng
-            </h2>
-
-            {/* Scroll Instruction */}
-            <div className="text-center mb-12">
-              <p className="text-white/70 mb-2">Hãy cuộn trang từ từ xuống dưới</p>
-              <ChevronDown className="w-6 h-6 text-white/50 mx-auto animate-bounce" />
+            {/* Tiêu đề với hiệu ứng glassmorphism */}
+            <div className="bg-black/30 backdrop-blur-md border border-white/20 rounded-xl p-6 mb-8">
+              <h2 className="text-2xl sm:text-3xl font-bold text-white text-center">
+                Nội dung bài giảng
+              </h2>
+              <div className="text-center mt-4">
+                <p className="text-white/70 mb-2">Hãy cuộn trang từ từ xuống dưới</p>
+                <ChevronDown className="w-6 h-6 text-white/50 mx-auto animate-bounce" />
+              </div>
             </div>
 
-            <div className="space-y-12">
+            <div className="space-y-8">
               {lessonsData.map((lesson, index) => (
                 <ScrollBlock key={lesson.id} index={index}>
+                  {/* Nội dung với hiệu ứng glassmorphism */}
                   <div className="bg-black/30 backdrop-blur-md border border-white/20 shadow-2xl rounded-xl overflow-hidden">
                     <div className="bg-gradient-to-r from-red-700 to-red-600 p-5">
                       <h3 className="text-white font-bold text-lg">{lesson.title}</h3>
@@ -832,7 +804,7 @@ function MinigameTab() {
   // Game Over Screen
   if (gameState === "lost") {
     return (
-      <div className="animate-fade-in-up py-8 px-4">
+      <div className="animate-fade-in-up py-8 px-4 bg-[url('/campus-hcm.png')] bg-cover bg-center bg-fixed bg-no-repeat min-h-screen">
         <div className="max-w-lg mx-auto">
           <div className="bg-white rounded-2xl shadow-xl p-8 text-center">
             <div className="w-20 h-20 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-6">
@@ -865,22 +837,28 @@ function MinigameTab() {
     const mins = Math.floor(timer / 60)
     const secs = timer % 60
     return (
-      <div className="animate-fade-in-up py-8 px-4">
+      <div className="animate-fade-in-up py-8 px-4 bg-[url('/campus-hcm.png')] bg-cover bg-center bg-fixed bg-no-repeat min-h-screen">
         <div className="max-w-lg mx-auto">
           <div className="bg-white rounded-2xl shadow-xl p-8 text-center">
-            <div className="w-20 h-20 bg-amber-100 rounded-full flex items-center justify-center mx-auto mb-6">
-              <Unlock className="w-10 h-10 text-amber-600" />
+            {/* Rương kho báu đã mở */}
+            <div className="mb-6">
+              <img
+                src="/ruong1.png"
+                alt="Rương Kho Báu Đã Mở"
+                className="w-48 h-36 object-contain mx-auto"
+              />
             </div>
+
             <h2 className="text-2xl font-bold text-amber-600 mb-6">
               MỞ KHÓA THÀNH CÔNG!
             </h2>
 
-            {/* Polaroid-style image */}
-            <div className="inline-block bg-white p-3 pb-12 shadow-lg rotate-1 mb-6">
+            {/* Logo FPT University */}
+            <div className="inline-block mb-6">
               <img
-                src="https://upload.wikimedia.org/wikipedia/commons/1/11/FPT_logo_2010.svg"
-                alt="FPT University Logo"
-                className="w-48 h-32 object-contain"
+                src="/FPT_Education_logo.svg.png"
+                alt="FPT University"
+                className="w-64 h-64 object-contain mx-auto"
               />
             </div>
 
@@ -914,7 +892,7 @@ function MinigameTab() {
   const question = quizData[currentQuestion]
 
   return (
-    <div className="animate-fade-in-up py-8 px-4">
+    <div className="animate-fade-in-up py-8 px-4 bg-[url('/fptcam.png')] bg-cover bg-center bg-fixed bg-no-repeat min-h-screen">
       <div className="max-w-6xl mx-auto">
         <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 text-center mb-2">
           Giải mã rương kho báu
@@ -1028,6 +1006,15 @@ function MinigameTab() {
 
           {/* RIGHT - CHEST SECTION */}
           <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
+            {/* Chest Image */}
+            <div className="p-6 pb-0">
+              <img
+                src="/ruong2.png"
+                alt="Rương Kho Báu"
+                className="w-full h-48 object-contain"
+              />
+            </div>
+
             {/* Chest Header */}
             <div className="bg-gradient-to-r from-amber-600 to-amber-500 p-4 text-center">
               <Lock className="w-12 h-12 text-white mx-auto mb-2" />
