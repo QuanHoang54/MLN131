@@ -18,6 +18,7 @@ import {
   AlertTriangle,
   Clock,
   Heart,
+  Users,
 } from "lucide-react"
 import { cn } from "@/lib/utils"
 
@@ -261,14 +262,16 @@ function Header({
     <header className="fixed top-0 left-0 right-0 z-50 bg-gradient-to-r from-red-800 to-red-700 shadow-lg">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          <h1 className="text-white font-bold text-sm sm:text-lg md:text-xl truncate flex items-center gap-3">
-            <span>CHỦ NGHĨA XÃ HỘI KHOA HỌC</span>
+          <div className="flex items-center gap-3">
             <img
-              src="https://upload.wikimedia.org/wikipedia/commons/1/11/FPT_logo_2010.svg"
+              src="/fptu.png"
               alt="FPT University"
-              className="h-8 w-auto hidden sm:block"
+              className="h-10 w-auto"
             />
-          </h1>
+            <h1 className="text-white font-bold text-sm sm:text-lg md:text-xl truncate">
+              CHỦ NGHĨA XÃ HỘI KHOA HỌC
+            </h1>
+          </div>
           <nav className="flex items-center gap-1 sm:gap-2">
             {tabs.map((tab) => {
               const Icon = tab.icon
@@ -298,61 +301,115 @@ function Header({
 
 function HomeTab({ setActiveTab }: { setActiveTab: (tab: string) => void }) {
   return (
-    <div className="animate-fade-in-up">
-      {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-red-800 via-red-700 to-red-600 py-20 sm:py-28 px-4 overflow-hidden">
-        <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg%20width%3D%2260%22%20height%3D%2260%22%20viewBox%3D%220%200%2060%2060%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cg%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%3Cg%20fill%3D%22%23ffffff%22%20fill-opacity%3D%220.05%22%3E%3Cpath%20d%3D%22M36%2034v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6%2034v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6%204V0H4v4H0v2h4v4h2V6h4V4H6z%22%2F%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E')] opacity-30"></div>
-        <div className="max-w-4xl mx-auto text-center relative z-10">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-6 leading-tight text-balance">
-            Liên Minh Giai Cấp & Kinh Tế Tư Nhân Ở Việt Nam
-          </h2>
-          <p className="text-lg sm:text-xl text-red-100 mb-8 max-w-2xl mx-auto text-pretty">
-            Tìm hiểu về chủ nghĩa xã hội khoa học trong bối cảnh Việt Nam hiện nay
-          </p>
-          <button
-            onClick={() => setActiveTab("library")}
-            className="inline-flex items-center gap-2 bg-amber-400 hover:bg-amber-300 text-red-900 font-semibold px-8 py-4 rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1"
-          >
-            Bắt đầu khám phá
-            <ArrowRight className="w-5 h-5" />
-          </button>
-        </div>
-      </section>
-
-      {/* Highlights Section */}
-      <section className="py-16 px-4 bg-gray-50">
-        <div className="max-w-6xl mx-auto">
-          <h3 className="text-2xl sm:text-3xl font-bold text-gray-800 text-center mb-12">
-            Nội dung chính
-          </h3>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <HighlightCard
-              icon={Lightbulb}
-              title="Lý luận cốt lõi"
-              description="Tìm hiểu cơ cấu xã hội - giai cấp và các quy luật biến đổi theo quan điểm Mác - Lênin"
-              borderColor="border-t-blue-500"
-              iconBg="bg-blue-100"
-              iconColor="text-blue-600"
-            />
-            <HighlightCard
-              icon={MapPin}
-              title="Thực tiễn Việt Nam"
-              description="Phân tích đặc điểm các giai tầng và mối quan hệ liên minh trong xã hội Việt Nam hiện đại"
-              borderColor="border-t-emerald-500"
-              iconBg="bg-emerald-100"
-              iconColor="text-emerald-600"
-            />
-            <HighlightCard
-              icon={HelpCircle}
-              title="Giải đáp mâu thuẫn"
-              description="Làm rõ vì sao phát triển kinh tế tư nhân không mâu thuẫn với nguyên lý Mác - Lênin"
-              borderColor="border-t-amber-500"
-              iconBg="bg-amber-100"
-              iconColor="text-amber-600"
-            />
+    <div className="animate-fade-in-up bg-fixed bg-cover bg-center bg-no-repeat" style={{ backgroundImage: 'url(/Tu-tuong-Ho-Chi-Minh-_5-1-1024x641.jpg)' }}>
+      {/* Red Overlay for full page */}
+      <div className="bg-red-900/80 min-h-screen">
+        {/* Hero Section */}
+        <section className="py-20 sm:py-28 px-4">
+          <div className="max-w-4xl mx-auto text-center">
+            <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-4 leading-tight text-balance uppercase drop-shadow-lg">
+              LIÊN MINH CÔNG – NÔNG – TRÍ THỨC TRONG LÝ LUẬN MÁC – LÊNIN VÀ VAI TRÒ CỦA KINH TẾ TƯ NHÂN Ở VIỆT NAM HIỆN NAY – KẾ THỪA HAY THAY ĐỔI?
+            </h2>
+            <p className="text-lg sm:text-xl text-white/90 mb-8 max-w-2xl mx-auto text-pretty drop-shadow">
+              Tìm hiểu về cơ cấu xã hội - giai cấp và liên minh giai cấp, tầng lớp trong thời kỳ quá độ lên chủ nghĩa xã hội ở Việt Nam
+            </p>
+            <button
+              onClick={() => setActiveTab("library")}
+              className="inline-flex items-center gap-2 bg-amber-400 hover:bg-amber-300 text-red-900 font-semibold px-8 py-4 rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1"
+            >
+              Bắt đầu khám phá
+              <ArrowRight className="w-5 h-5" />
+            </button>
           </div>
-        </div>
-      </section>
+        </section>
+
+
+        {/* Highlights Section with Glassmorphism */}
+        <section className="py-16 px-4">
+          <div className="max-w-6xl mx-auto">
+            <h3 className="text-2xl sm:text-3xl font-bold text-white text-center mb-12">
+              Nội dung chính
+            </h3>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <HighlightCard
+                icon={Lightbulb}
+                title="Lý luận cốt lõi"
+                description="Tìm hiểu cơ cấu xã hội - giai cấp và các quy luật biến đổi theo quan điểm Mác - Lênin"
+                borderColor="border-t-blue-400"
+                iconBg="bg-blue-500/30"
+                iconColor="text-blue-300"
+              />
+              <HighlightCard
+                icon={MapPin}
+                title="Thực tiễn Việt Nam"
+                description="Phân tích đặc điểm các giai tầng và mối quan hệ liên minh trong xã hội Việt Nam hiện đại"
+                borderColor="border-t-emerald-400"
+                iconBg="bg-emerald-500/30"
+                iconColor="text-emerald-300"
+              />
+              <HighlightCard
+                icon={HelpCircle}
+                title="Giải đáp mâu thuẫn"
+                description="Làm rõ vì sao phát triển kinh tế tư nhân không mâu thuẫn với nguyên lý Mác - Lênin"
+                borderColor="border-t-amber-400"
+                iconBg="bg-amber-500/30"
+                iconColor="text-amber-300"
+              />
+            </div>
+          </div>
+        </section>
+
+        {/* Group Info Card - Bottom of Home with Glassmorphism */}
+        <section className="py-12 px-4">
+          <div className="max-w-3xl mx-auto">
+            <div className="bg-white/10 backdrop-blur-md rounded-2xl p-8 shadow-xl border border-white/20">
+              <div className="text-center mb-6">
+                <h3 className="text-2xl sm:text-3xl font-bold text-white mb-2">
+                  THÔNG TIN NHÓM
+                </h3>
+                <div className="w-16 h-1 bg-amber-400 mx-auto rounded-full"></div>
+              </div>
+
+              <div className="space-y-4">
+                <div className="grid grid-cols-2 gap-4">
+                  <div className="bg-white/10 rounded-xl p-4 text-center border border-white/10">
+                    <p className="text-sm text-white/70 mb-1">Mã Lớp</p>
+                    <p className="text-lg font-bold text-white">SP26_MLN131_IA1807</p>
+                  </div>
+                  <div className="bg-white/10 rounded-xl p-4 text-center border border-white/10">
+                    <p className="text-sm text-white/70 mb-1">Tên Môn</p>
+                    <p className="text-lg font-bold text-white">MLN131</p>
+                  </div>
+                </div>
+
+                <div className="bg-gradient-to-r from-red-600/40 to-amber-600/40 rounded-xl p-5 text-center border border-white/10">
+                  <p className="text-sm text-white/70 mb-2">Tên Nhóm</p>
+                  <p className="text-2xl font-bold text-amber-300">Nhóm 6</p>
+                  <p className="text-sm text-white/70 mt-2">Năm 2026</p>
+                </div>
+
+                <div className="pt-4 border-t border-white/20">
+                  <p className="text-sm text-white/70 mb-3 text-center">Thành Viên</p>
+                  <div className="flex flex-wrap justify-center gap-3">
+                    <span className="px-5 py-2.5 bg-blue-500/30 text-blue-200 rounded-full text-sm font-medium flex items-center gap-2 border border-blue-400/30">
+                      <Users className="w-4 h-4" />
+                      Nguyễn Văn Cường
+                    </span>
+                    <span className="px-5 py-2.5 bg-green-500/30 text-green-200 rounded-full text-sm font-medium flex items-center gap-2 border border-green-400/30">
+                      <Users className="w-4 h-4" />
+                      Nguyễn Hoàng Minh
+                    </span>
+                    <span className="px-5 py-2.5 bg-purple-500/30 text-purple-200 rounded-full text-sm font-medium flex items-center gap-2 border border-purple-400/30">
+                      <Users className="w-4 h-4" />
+                      Nguyễn Hoàng Quân
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
     </div>
   )
 }
@@ -375,7 +432,7 @@ function HighlightCard({
   return (
     <div
       className={cn(
-        "bg-white rounded-2xl p-6 shadow-md hover:shadow-xl transition-all duration-300 border-t-4",
+        "bg-white/10 backdrop-blur-md rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-all duration-300 border-t-4 border-white/20",
         borderColor
       )}
     >
@@ -387,8 +444,8 @@ function HighlightCard({
       >
         <Icon className={cn("w-7 h-7", iconColor)} />
       </div>
-      <h4 className="text-xl font-bold text-gray-800 mb-3">{title}</h4>
-      <p className="text-gray-600 leading-relaxed">{description}</p>
+      <h4 className="text-xl font-bold text-white mb-3">{title}</h4>
+      <p className="text-white/80 leading-relaxed">{description}</p>
     </div>
   )
 }
@@ -442,31 +499,36 @@ function ScrollBlock({
 
 function LibraryTab() {
   return (
-    <div className="animate-fade-in-up py-8 px-4">
-      <div className="max-w-4xl mx-auto">
-        <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 text-center mb-4">
-          Nội dung bài giảng
-        </h2>
+    <div className="animate-fade-in-up bg-fixed bg-cover bg-center bg-no-repeat min-h-screen" style={{ backgroundImage: 'url(/tranhcodong_giaoduc_so1-800x445.jpg)' }}>
+      {/* Red Overlay */}
+      <div className="bg-red-950/85 min-h-screen">
+        <div className="py-8 px-4">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-2xl sm:text-3xl font-bold text-white text-center mb-4">
+              Nội dung bài giảng
+            </h2>
 
-        {/* Scroll Instruction */}
-        <div className="text-center mb-12">
-          <p className="text-gray-500 mb-2">Hãy cuộn trang từ từ xuống dưới</p>
-          <ChevronDown className="w-6 h-6 text-gray-400 mx-auto animate-bounce" />
-        </div>
+            {/* Scroll Instruction */}
+            <div className="text-center mb-12">
+              <p className="text-white/70 mb-2">Hãy cuộn trang từ từ xuống dưới</p>
+              <ChevronDown className="w-6 h-6 text-white/50 mx-auto animate-bounce" />
+            </div>
 
-        <div className="space-y-12">
-          {lessonsData.map((lesson, index) => (
-            <ScrollBlock key={lesson.id} index={index}>
-              <div className="bg-white rounded-2xl shadow-lg overflow-hidden">
-                <div className="bg-gradient-to-r from-red-600 to-red-500 p-5">
-                  <h3 className="text-white font-bold text-lg">{lesson.title}</h3>
-                </div>
-                <div className="p-6">
-                  <LessonContent lesson={lesson} />
-                </div>
-              </div>
-            </ScrollBlock>
-          ))}
+            <div className="space-y-12">
+              {lessonsData.map((lesson, index) => (
+                <ScrollBlock key={lesson.id} index={index}>
+                  <div className="bg-black/30 backdrop-blur-md border border-white/20 shadow-2xl rounded-xl overflow-hidden">
+                    <div className="bg-gradient-to-r from-red-700 to-red-600 p-5">
+                      <h3 className="text-white font-bold text-lg">{lesson.title}</h3>
+                    </div>
+                    <div className="p-6">
+                      <LessonContent lesson={lesson} />
+                    </div>
+                  </div>
+                </ScrollBlock>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -478,17 +540,17 @@ function LessonContent({ lesson }: { lesson: (typeof lessonsData)[0] }) {
 
   return (
     <div className="space-y-4">
-      <p className="text-gray-700 leading-relaxed">{content.intro}</p>
+      <p className="text-white/90 leading-relaxed">{content.intro}</p>
 
       {"rules" in content && content.rules && (
         <div className="space-y-3">
           {content.rules.map((rule, idx) => (
             <div
               key={idx}
-              className="bg-blue-50 border-l-4 border-l-blue-500 rounded-r-xl p-4"
+              className="bg-blue-900/30 border-l-4 border-l-blue-400 rounded-r-xl p-4"
             >
-              <h5 className="font-bold text-blue-800 mb-1">{rule.title}</h5>
-              <p className="text-blue-700 text-sm leading-relaxed">
+              <h5 className="font-bold text-blue-300 mb-1">{rule.title}</h5>
+              <p className="text-blue-100/80 text-sm leading-relaxed">
                 {rule.description}
               </p>
             </div>
@@ -501,17 +563,17 @@ function LessonContent({ lesson }: { lesson: (typeof lessonsData)[0] }) {
           {content.highlights.map((hl, idx) => (
             <div
               key={idx}
-              className="bg-emerald-50 border-l-4 border-l-emerald-500 rounded-r-xl p-4"
+              className="bg-emerald-900/30 border-l-4 border-l-emerald-400 rounded-r-xl p-4"
             >
-              <h5 className="font-bold text-emerald-800 mb-1">{hl.label}</h5>
-              <p className="text-emerald-700 text-sm leading-relaxed">
+              <h5 className="font-bold text-emerald-300 mb-1">{hl.label}</h5>
+              <p className="text-emerald-100/80 text-sm leading-relaxed">
                 {hl.description}
               </p>
             </div>
           ))}
           {content.note && (
-            <div className="bg-amber-50 rounded-xl p-4 mt-4">
-              <p className="text-amber-800 text-sm font-medium">{content.note}</p>
+            <div className="bg-amber-900/30 rounded-xl p-4 mt-4 border border-amber-500/30">
+              <p className="text-amber-200 text-sm font-medium">{content.note}</p>
             </div>
           )}
         </div>
@@ -522,10 +584,10 @@ function LessonContent({ lesson }: { lesson: (typeof lessonsData)[0] }) {
           {content.classes.map((cls, idx) => (
             <div
               key={idx}
-              className={cn("border-l-4 rounded-r-xl p-4", cls.color)}
+              className={cn("border-l-4 rounded-r-xl p-4 bg-black/20", cls.color)}
             >
-              <h5 className="font-bold text-gray-800 mb-1">{cls.name}</h5>
-              <p className="text-gray-700 text-sm leading-relaxed">
+              <h5 className="font-bold text-white mb-1">{cls.name}</h5>
+              <p className="text-white/80 text-sm leading-relaxed">
                 {cls.description}
               </p>
             </div>
@@ -535,9 +597,9 @@ function LessonContent({ lesson }: { lesson: (typeof lessonsData)[0] }) {
 
       {"inheritance" in content && content.inheritance && (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div className="bg-red-50 rounded-xl p-4">
-            <h5 className="font-bold text-red-800 mb-3 flex items-center gap-2">
-              <span className="w-6 h-6 bg-red-200 rounded-full flex items-center justify-center text-xs">
+          <div className="bg-red-900/30 rounded-xl p-4 border border-red-500/30">
+            <h5 className="font-bold text-red-300 mb-3 flex items-center gap-2">
+              <span className="w-6 h-6 bg-red-700 rounded-full flex items-center justify-center text-xs text-white">
                 1
               </span>
               Điểm kế thừa
@@ -546,7 +608,7 @@ function LessonContent({ lesson }: { lesson: (typeof lessonsData)[0] }) {
               {content.inheritance.map((item, idx) => (
                 <li
                   key={idx}
-                  className="text-red-700 text-sm flex items-start gap-2"
+                  className="text-red-100/80 text-sm flex items-start gap-2"
                 >
                   <span className="text-red-400 mt-1">-</span>
                   {item}
@@ -554,9 +616,9 @@ function LessonContent({ lesson }: { lesson: (typeof lessonsData)[0] }) {
               ))}
             </ul>
           </div>
-          <div className="bg-emerald-50 rounded-xl p-4">
-            <h5 className="font-bold text-emerald-800 mb-3 flex items-center gap-2">
-              <span className="w-6 h-6 bg-emerald-200 rounded-full flex items-center justify-center text-xs">
+          <div className="bg-emerald-900/30 rounded-xl p-4 border border-emerald-500/30">
+            <h5 className="font-bold text-emerald-300 mb-3 flex items-center gap-2">
+              <span className="w-6 h-6 bg-emerald-700 rounded-full flex items-center justify-center text-xs text-white">
                 2
               </span>
               Điểm sáng tạo
@@ -566,7 +628,7 @@ function LessonContent({ lesson }: { lesson: (typeof lessonsData)[0] }) {
                 content.innovation.map((item, idx) => (
                   <li
                     key={idx}
-                    className="text-emerald-700 text-sm flex items-start gap-2"
+                    className="text-emerald-100/80 text-sm flex items-start gap-2"
                   >
                     <span className="text-emerald-400 mt-1">-</span>
                     {item}
@@ -578,8 +640,8 @@ function LessonContent({ lesson }: { lesson: (typeof lessonsData)[0] }) {
       )}
 
       {"conclusion" in content && content.conclusion && (
-        <div className="bg-gradient-to-r from-red-50 to-amber-50 rounded-xl p-4 mt-4">
-          <p className="text-gray-800 font-medium text-sm leading-relaxed">
+        <div className="bg-gradient-to-r from-red-900/40 to-amber-900/40 rounded-xl p-4 mt-4 border border-white/10">
+          <p className="text-white font-medium text-sm leading-relaxed">
             {content.conclusion}
           </p>
         </div>
