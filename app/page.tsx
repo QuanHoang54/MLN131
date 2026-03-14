@@ -253,7 +253,7 @@ function Header({
 }) {
   const tabs = [
     { id: "home", label: "Trang chủ", icon: Home },
-    { id: "library", label: "Bai giang", icon: BookOpen },
+    { id: "library", label: "Bài giảng", icon: BookOpen },
     { id: "minigame", label: "Minigame", icon: Gamepad2 },
   ]
 
@@ -261,8 +261,13 @@ function Header({
     <header className="fixed top-0 left-0 right-0 z-50 bg-gradient-to-r from-red-800 to-red-700 shadow-lg">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          <h1 className="text-white font-bold text-sm sm:text-lg md:text-xl truncate">
-            LY LUAN MAC - LENIN & THUC TIEN VN
+          <h1 className="text-white font-bold text-sm sm:text-lg md:text-xl truncate flex items-center gap-3">
+            <span>CHỦ NGHĨA XÃ HỘI KHOA HỌC</span>
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/1/11/FPT_logo_2010.svg"
+              alt="FPT University"
+              className="h-8 w-auto hidden sm:block"
+            />
           </h1>
           <nav className="flex items-center gap-1 sm:gap-2">
             {tabs.map((tab) => {
@@ -299,16 +304,16 @@ function HomeTab({ setActiveTab }: { setActiveTab: (tab: string) => void }) {
         <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg%20width%3D%2260%22%20height%3D%2260%22%20viewBox%3D%220%200%2060%2060%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cg%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%3Cg%20fill%3D%22%23ffffff%22%20fill-opacity%3D%220.05%22%3E%3Cpath%20d%3D%22M36%2034v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6%2034v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6%204V0H4v4H0v2h4v4h2V6h4V4H6z%22%2F%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E')] opacity-30"></div>
         <div className="max-w-4xl mx-auto text-center relative z-10">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-6 leading-tight text-balance">
-            Lien Minh Giai Cap & Kinh Te Tu Nhan O Viet Nam
+            Liên Minh Giai Cấp & Kinh Tế Tư Nhân Ở Việt Nam
           </h2>
           <p className="text-lg sm:text-xl text-red-100 mb-8 max-w-2xl mx-auto text-pretty">
-            Ke thua nguyen ly Mac - Lenin hay thay doi de thich ung?
+            Tìm hiểu về chủ nghĩa xã hội khoa học trong bối cảnh Việt Nam hiện nay
           </p>
           <button
             onClick={() => setActiveTab("library")}
             className="inline-flex items-center gap-2 bg-amber-400 hover:bg-amber-300 text-red-900 font-semibold px-8 py-4 rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1"
           >
-            Bat dau kham pha
+            Bắt đầu khám phá
             <ArrowRight className="w-5 h-5" />
           </button>
         </div>
@@ -318,29 +323,29 @@ function HomeTab({ setActiveTab }: { setActiveTab: (tab: string) => void }) {
       <section className="py-16 px-4 bg-gray-50">
         <div className="max-w-6xl mx-auto">
           <h3 className="text-2xl sm:text-3xl font-bold text-gray-800 text-center mb-12">
-            Noi dung chinh
+            Nội dung chính
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <HighlightCard
               icon={Lightbulb}
-              title="Ly luan cot loi"
-              description="Tim hieu co cau xa hoi - giai cap va cac quy luat bien doi theo quan diem Mac - Lenin"
+              title="Lý luận cốt lõi"
+              description="Tìm hiểu cơ cấu xã hội - giai cấp và các quy luật biến đổi theo quan điểm Mác - Lênin"
               borderColor="border-t-blue-500"
               iconBg="bg-blue-100"
               iconColor="text-blue-600"
             />
             <HighlightCard
               icon={MapPin}
-              title="Thuc tien Viet Nam"
-              description="Phan tich dac diem cac giai tang va moi quan he lien minh trong xa hoi Viet Nam hien dai"
+              title="Thực tiễn Việt Nam"
+              description="Phân tích đặc điểm các giai tầng và mối quan hệ liên minh trong xã hội Việt Nam hiện đại"
               borderColor="border-t-emerald-500"
               iconBg="bg-emerald-100"
               iconColor="text-emerald-600"
             />
             <HighlightCard
               icon={HelpCircle}
-              title="Giai dap mau thuan"
-              description="Lam ro vi sao phat trien kinh te tu nhan khong mau thuan voi nguyen ly Mac - Lenin"
+              title="Giải đáp mâu thuẫn"
+              description="Làm rõ vì sao phát triển kinh tế tư nhân không mâu thuẫn với nguyên lý Mác - Lênin"
               borderColor="border-t-amber-500"
               iconBg="bg-amber-100"
               iconColor="text-amber-600"
@@ -440,12 +445,12 @@ function LibraryTab() {
     <div className="animate-fade-in-up py-8 px-4">
       <div className="max-w-4xl mx-auto">
         <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 text-center mb-4">
-          Noi dung bai giang
+          Nội dung bài giảng
         </h2>
 
         {/* Scroll Instruction */}
         <div className="text-center mb-12">
-          <p className="text-gray-500 mb-2">Hay cuon trang tu tu xuong duoi</p>
+          <p className="text-gray-500 mb-2">Hãy cuộn trang từ từ xuống dưới</p>
           <ChevronDown className="w-6 h-6 text-gray-400 mx-auto animate-bounce" />
         </div>
 
@@ -535,7 +540,7 @@ function LessonContent({ lesson }: { lesson: (typeof lessonsData)[0] }) {
               <span className="w-6 h-6 bg-red-200 rounded-full flex items-center justify-center text-xs">
                 1
               </span>
-              Diem ke thua
+              Điểm kế thừa
             </h5>
             <ul className="space-y-2">
               {content.inheritance.map((item, idx) => (
@@ -554,7 +559,7 @@ function LessonContent({ lesson }: { lesson: (typeof lessonsData)[0] }) {
               <span className="w-6 h-6 bg-emerald-200 rounded-full flex items-center justify-center text-xs">
                 2
               </span>
-              Diem sang tao
+              Điểm sáng tạo
             </h5>
             <ul className="space-y-2">
               {content.innovation &&
@@ -701,21 +706,21 @@ function MinigameTab() {
             <div className="w-20 h-20 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-6">
               <AlertTriangle className="w-10 h-10 text-red-600" />
             </div>
-            <h2 className="text-2xl font-bold text-red-600 mb-4">THAT BAI!</h2>
+            <h2 className="text-2xl font-bold text-red-600 mb-4">THẤT BẠI!</h2>
             <p className="text-gray-600 mb-6">
               {lossReason === "quiz"
-                ? "Ban da tra loi sai qua 3 cau quiz!"
-                : "Ban da doan sai mat ma 3 lan!"}
+                ? "Bạn đã trả lời sai quá 3 câu quiz!"
+                : "Bạn đã đoán sai mật mã 3 lần!"}
             </p>
             <p className="text-gray-500 mb-8">
-              Thoi gian: {formatTime(timer)}
+              Thời gian: {formatTime(timer)}
             </p>
             <button
               onClick={resetGame}
               className="inline-flex items-center gap-2 bg-red-600 hover:bg-red-700 text-white font-semibold px-6 py-3 rounded-xl transition-colors"
             >
               <RotateCcw className="w-5 h-5" />
-              Choi lai tu dau
+              Chơi lại từ đầu
             </button>
           </div>
         </div>
@@ -735,7 +740,7 @@ function MinigameTab() {
               <Unlock className="w-10 h-10 text-amber-600" />
             </div>
             <h2 className="text-2xl font-bold text-amber-600 mb-6">
-              MO KHOA THANH CONG!
+              MỞ KHÓA THÀNH CÔNG!
             </h2>
 
             {/* Polaroid-style image */}
@@ -749,14 +754,14 @@ function MinigameTab() {
 
             <div className="bg-orange-100 rounded-xl p-4 mb-6">
               <p className="text-orange-800 font-medium">
-                Bi mat duoc he lo: <strong>08/09/2006</strong> chinh la ngay
-                thanh lap truong Dai hoc FPT!
+                Bí mật được hé lộ: <strong>08/09/2006</strong> chính là ngày
+                thành lập trường Đại học FPT!
               </p>
             </div>
 
             <div className="bg-gray-100 rounded-xl p-4 mb-6">
               <p className="text-gray-700">
-                Thoi gian hoan thanh: <strong>{mins} phut {secs} giay</strong>
+                Thời gian hoàn thành: <strong>{mins} phút {secs} giây</strong>
               </p>
             </div>
 
@@ -765,7 +770,7 @@ function MinigameTab() {
               className="inline-flex items-center gap-2 bg-amber-500 hover:bg-amber-600 text-white font-semibold px-6 py-3 rounded-xl transition-colors"
             >
               <RotateCcw className="w-5 h-5" />
-              Choi lai
+              Chơi lại
             </button>
           </div>
         </div>
@@ -780,10 +785,10 @@ function MinigameTab() {
     <div className="animate-fade-in-up py-8 px-4">
       <div className="max-w-6xl mx-auto">
         <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 text-center mb-2">
-          Giai ma ruong kho bau
+          Giải mã rương kho báu
         </h2>
         <p className="text-gray-500 text-center mb-6">
-          Tra loi dung cau hoi de mo khoa mat ma bi mat!
+          Trả lời đúng câu hỏi để mở khóa mật mã bí mật!
         </p>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
@@ -818,7 +823,7 @@ function MinigameTab() {
                 ))}
               </div>
               <p className="text-white/80 text-sm mt-2 text-center">
-                Cau {currentQuestion + 1} / {quizData.length}
+                Câu {currentQuestion + 1} / {quizData.length}
               </p>
             </div>
 
@@ -879,10 +884,10 @@ function MinigameTab() {
                 <div className="text-center py-8">
                   <CheckCircle2 className="w-16 h-16 text-emerald-500 mx-auto mb-4" />
                   <h3 className="text-xl font-bold text-gray-800 mb-2">
-                    Hoan thanh Quiz!
+                    Hoàn thành Quiz!
                   </h3>
                   <p className="text-gray-600">
-                    Hay nhap mat ma de mo ruong kho bau
+                    Hãy nhập mật mã để mở rương kho báu
                   </p>
                 </div>
               )}
@@ -894,7 +899,7 @@ function MinigameTab() {
             {/* Chest Header */}
             <div className="bg-gradient-to-r from-amber-600 to-amber-500 p-4 text-center">
               <Lock className="w-12 h-12 text-white mx-auto mb-2" />
-              <h3 className="text-white font-bold text-lg">Ruong Kho Bau</h3>
+              <h3 className="text-white font-bold text-lg">Rương Kho Báu</h3>
             </div>
 
             {/* Chest Content */}
@@ -902,7 +907,7 @@ function MinigameTab() {
               {/* Password Slots */}
               <div className="mb-6">
                 <p className="text-gray-600 text-sm mb-3 text-center">
-                  Mat ma (10 ky tu):
+                  Mật mã (10 ký tự):
                 </p>
                 <div className="flex justify-center gap-1 flex-wrap">
                   {SECRET_PASSWORD.split("").map((char, idx) => (
@@ -925,7 +930,7 @@ function MinigameTab() {
               <div className="space-y-4">
                 <div>
                   <label className="block text-gray-700 text-sm font-medium mb-2">
-                    Nhap mat ma:
+                    Nhập mật mã:
                   </label>
                   <input
                     type="text"
@@ -948,13 +953,13 @@ function MinigameTab() {
                   )}
                 >
                   <Unlock className="w-5 h-5" />
-                  MO KHOA
+                  MỞ KHÓA
                 </button>
 
                 <div className="flex items-center justify-center gap-2 text-gray-500">
                   <AlertTriangle className="w-4 h-4 text-red-400" />
                   <span className="text-sm">
-                    Sai mat ma: {wrongPasswordGuesses}/3
+                    Sai mật mã: {wrongPasswordGuesses}/3
                   </span>
                 </div>
               </div>
