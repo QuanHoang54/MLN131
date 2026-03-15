@@ -34,9 +34,10 @@ const lessonsData = [
         subsections: [
           {
             subheading: "1.1. Khái niệm cơ cấu xã hội và cơ cấu xã hội - giai cấp",
+            imageRight: "/cocauxahoi.png",
             definitions: [
-              { term: "Cơ cấu xã hội (Nghĩa rộng)", description: "Là những cộng đồng người cùng toàn bộ những mối quan hệ xã hội của các cộng đồng ấy tạo nên. Xã hội không phải là một khối đồng nhất mà bao gồm nhiều thành phần cấu tạo thành như: Cơ cấu dân cư, cơ cấu nghề nghiệp, cơ cấu dân tộc, cơ cấu tôn giáo và cơ cấu giai cấp." },
-              { term: "Cơ cấu xã hội - giai cấp (Nghĩa hẹp - Trọng tâm)", description: "Là hệ thống các giai cấp, tầng lớp xã hội tồn tại khách quan trong một chế độ xã hội nhất định. Hệ thống này được hình thành thông qua những mối quan hệ cốt lõi: Sở hữu tư liệu sản xuất, Tổ chức quản lý quá trình sản xuất, Địa vị chính trị - xã hội giữa các giai cấp, tầng lớp." }
+              { term: "Cơ cấu xã hội", description: "Là những cộng đồng người cùng toàn bộ những mối quan hệ xã hội của các cộng đồng ấy tạo nên. Xã hội không phải là một khối đồng nhất mà bao gồm nhiều thành phần cấu tạo thành như: Cơ cấu dân cư, cơ cấu nghề nghiệp, cơ cấu dân tộc, cơ cấu tôn giáo và cơ cấu giai cấp." },
+              { term: "Cơ cấu xã hội - giai cấp", description: "Là hệ thống các giai cấp, tầng lớp xã hội tồn tại khách quan trong một chế độ xã hội nhất định. Hệ thống này được hình thành thông qua những mối quan hệ cốt lõi: Sở hữu tư liệu sản xuất, Tổ chức quản lý quá trình sản xuất, Địa vị chính trị - xã hội giữa các giai cấp, tầng lớp.", imageCenter: "/giai-cap-la-gi_0906142048.jpeg", imageCaption: "Minh họa phân tầng giai cấp trong xã hội" }
             ]
           },
           {
@@ -426,13 +427,42 @@ function LessonContent({ lesson }: { lesson: (typeof lessonsData)[0] }) {
             <div className="space-y-6">
               {section.subsections.map((sub, subIdx) => (
                 <div key={subIdx} className="space-y-3">
-                  <h5 className="font-semibold text-gray-800">{sub.subheading}</h5>
+                  <div className="flex flex-col md:flex-row gap-4">
+                    <div className="flex-1">
+                      <h5 className="font-semibold text-gray-800">{sub.subheading}</h5>
+                    </div>
+                    {"imageRight" in sub && sub.imageRight && (
+                      <div className="md:w-48 lg:w-56 flex-shrink-0">
+                        <img
+                          src={sub.imageRight}
+                          alt="Hình minh họa"
+                          className="w-full rounded-lg shadow-lg"
+                        />
+                      </div>
+                    )}
+                  </div>
                   {"definitions" in sub && sub.definitions && (
                     <div className="space-y-3">
                       {sub.definitions.map((def, defIdx) => (
                         <div key={defIdx} className="bg-blue-50 border-l-4 border-l-blue-500 rounded-r-xl p-4">
                           <h6 className="font-bold text-blue-800 mb-2">{def.term}</h6>
                           <p className="text-blue-700 text-sm leading-relaxed">{def.description}</p>
+                          {"imageCenter" in def && def.imageCenter && (
+                            <div className="mt-4">
+                              <figure className="w-4/5 mx-auto">
+                                <img
+                                  src={def.imageCenter}
+                                  alt="Minh họa"
+                                  className="w-full rounded-lg shadow-lg"
+                                />
+                                {"imageCaption" in def && def.imageCaption && (
+                                  <figcaption className="text-center text-gray-600 text-sm mt-2 italic">
+                                    {def.imageCaption}
+                                  </figcaption>
+                                )}
+                              </figure>
+                            </div>
+                          )}
                         </div>
                       ))}
                     </div>
