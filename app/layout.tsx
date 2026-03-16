@@ -1,9 +1,15 @@
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import { Be_Vietnam_Pro } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import './globals.css'
 
-const inter = Inter({ subsets: ["vietnamese"] });
+// Be Vietnam Pro - Font chuyên biệt cho tiếng Việt
+const beVietnamPro = Be_Vietnam_Pro({
+  subsets: ["vietnamese"],
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+  variable: "--font-be-vietnam",
+  display: "swap",
+})
 
 export const metadata: Metadata = {
   title: 'Chủ Nghĩa Xã Hội Khoa Học - FPT University',
@@ -35,7 +41,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="vi" suppressHydrationWarning>
-      <body className={`${inter.className} antialiased`}>
+      <body className={`${beVietnamPro.variable} font-sans antialiased`}>
         {children}
         <Analytics />
       </body>

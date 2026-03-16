@@ -628,13 +628,16 @@ function HomeTab({ setActiveTab }: { setActiveTab: (tab: string) => void }) {
           {/* Hero Section */}
           <section className="py-20 sm:py-28 px-4">
             <div className="max-w-4xl mx-auto text-center">
-              {/* Animated gradient text effect */}
-              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 leading-tight uppercase drop-shadow-lg">
-                <div className="mb-2 bg-gradient-to-r from-amber-200 via-yellow-400 to-amber-200 bg-clip-text text-transparent animate-pulse">
+              {/* Animated gradient text effect - Balanced spacing for 3 lines */}
+              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6 drop-shadow-lg leading-[1.3] space-y-3">
+                <div className="bg-gradient-to-r from-amber-200 via-yellow-400 to-amber-200 bg-clip-text text-transparent animate-pulse">
                   LIÊN MINH CÔNG – NÔNG – TRÍ THỨC
                 </div>
                 <div className="bg-gradient-to-r from-amber-200 via-yellow-400 to-amber-200 bg-clip-text text-transparent">
-                  VÀ KINH TẾ TƯ NHÂN: KẾ THỪA HAY THAY ĐỔI?
+                  VÀ KINH TẾ TƯ NHÂN:
+                </div>
+                <div className="bg-gradient-to-r from-amber-200 via-yellow-400 to-amber-200 bg-clip-text text-transparent">
+                  KẾ THỪA HAY THAY ĐỔI?
                 </div>
               </h2>
               <p className="text-lg sm:text-xl text-white/90 mb-8 max-w-2xl mx-auto text-pretty drop-shadow animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
@@ -656,7 +659,7 @@ function HomeTab({ setActiveTab }: { setActiveTab: (tab: string) => void }) {
           <section className="py-16 px-4">
             <div className="max-w-5xl mx-auto">
               {/* Section Title with animated underline */}
-              <h3 className="text-3xl sm:text-4xl font-bold text-center mb-12 text-white drop-shadow-lg relative inline-block w-full">
+              <h3 className="text-3xl sm:text-4xl font-bold text-center mb-12 text-white drop-shadow-lg relative inline-block w-full leading-[1.4]">
                 <span className="relative z-10">NỘI DUNG CHÍNH CỦA CHỦ ĐỀ</span>
                 <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-32 h-1 bg-gradient-to-r from-transparent via-amber-400 to-transparent animate-pulse"></span>
               </h3>
@@ -864,7 +867,7 @@ function LibraryTab() {
                   <span className="inline-block bg-amber-400 text-red-900 text-xs font-bold px-3 py-1 rounded-full mb-2 hover:scale-110 transition-transform">
                     {lesson.part}
                   </span>
-                  <h3 className="text-white font-bold text-xl leading-tight group-hover:text-amber-200 transition-colors">{lesson.title}</h3>
+                  <h3 className="text-white font-bold text-xl leading-[1.4] group-hover:text-amber-200 transition-colors">{lesson.title}</h3>
                 </div>
                 <div className="p-6">
                   <LessonContent lesson={lesson} />

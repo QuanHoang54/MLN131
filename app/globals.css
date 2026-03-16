@@ -75,7 +75,7 @@
 }
 
 @theme inline {
-  --font-sans: 'Inter', 'Inter Fallback', system-ui, sans-serif;
+  --font-sans: var(--font-be-vietnam), 'Be Vietnam Pro', 'Times New Roman', system-ui, sans-serif;
   --font-mono: 'Inter Mono', 'Inter Mono Fallback', system-ui, monospace;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
