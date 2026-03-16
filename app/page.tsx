@@ -1217,9 +1217,11 @@ function AppendixTab() {
                   <td className="border border-gray-200/50 px-4 py-3 text-gray-700 font-medium">
                     Minigame Mở rương kho báu
                   </td>
-                  <td className="border border-gray-200/50 px-4 py-3 text-gray-600">
-                    <span className="inline-block bg-purple-100 text-purple-700 px-2 py-1 rounded text-xs font-medium mr-1">Gemini</span>
-                    <span className="inline-block bg-cyan-100 text-cyan-700 px-2 py-1 rounded text-xs font-medium">Claude</span>
+                  <td className="border border-gray-200/50 px-4 py-3">
+                    <div className="flex flex-wrap justify-center items-center gap-1.5">
+                      <span className="inline-flex items-center bg-purple-100 text-purple-700 px-2.5 py-1 rounded-full text-xs font-semibold shadow-sm">Gemini</span>
+                      <span className="inline-flex items-center bg-cyan-100 text-cyan-700 px-2.5 py-1 rounded-full text-xs font-semibold shadow-sm">Claude</span>
+                    </div>
                   </td>
                   <td className="border border-gray-200/50 px-4 py-3 text-gray-600 text-sm">
                     "Tạo 20 câu hỏi trắc nghiệm từ nội dung Cơ cấu xã hội, viết code random câu hỏi"
@@ -1232,9 +1234,11 @@ function AppendixTab() {
                   <td className="border border-gray-200/50 px-4 py-3 text-gray-700 font-medium">
                     Flashcard Ôn tập
                   </td>
-                  <td className="border border-gray-200/50 px-4 py-3 text-gray-600">
-                    <span className="inline-block bg-purple-100 text-purple-700 px-2 py-1 rounded text-xs font-medium mr-1">Gemini</span>
-                    <span className="inline-block bg-cyan-100 text-cyan-700 px-2 py-1 rounded text-xs font-medium">Claude</span>
+                  <td className="border border-gray-200/50 px-4 py-3">
+                    <div className="flex flex-wrap justify-center items-center gap-1.5">
+                      <span className="inline-flex items-center bg-purple-100 text-purple-700 px-2.5 py-1 rounded-full text-xs font-semibold shadow-sm">Gemini</span>
+                      <span className="inline-flex items-center bg-cyan-100 text-cyan-700 px-2.5 py-1 rounded-full text-xs font-semibold shadow-sm">Claude</span>
+                    </div>
                   </td>
                   <td className="border border-gray-200/50 px-4 py-3 text-gray-600 text-sm">
                     "Chuyển đổi lý thuyết Liên minh Công-Nông thành 19 thẻ flashcard dạng lật 3D"
@@ -1247,8 +1251,10 @@ function AppendixTab() {
                   <td className="border border-gray-200/50 px-4 py-3 text-gray-700 font-medium">
                     Cấu trúc UI/UX Trang chủ
                   </td>
-                  <td className="border border-gray-200/50 px-4 py-3 text-gray-600">
-                    <span className="inline-block bg-cyan-100 text-cyan-700 px-2 py-1 rounded text-xs font-medium">Claude</span>
+                  <td className="border border-gray-200/50 px-4 py-3">
+                    <div className="flex justify-center">
+                      <span className="inline-flex items-center bg-cyan-100 text-cyan-700 px-2.5 py-1 rounded-full text-xs font-semibold shadow-sm">Claude</span>
+                    </div>
                   </td>
                   <td className="border border-gray-200/50 px-4 py-3 text-gray-600 text-sm">
                     "Tạo bố cục chia cột cho phần định nghĩa, chèn ảnh 5 lớp xã hội"
@@ -1261,8 +1267,10 @@ function AppendixTab() {
                   <td className="border border-gray-200/50 px-4 py-3 text-gray-700 font-medium">
                     Video Podcast/Tóm tắt bài học
                   </td>
-                  <td className="border border-gray-200/50 px-4 py-3 text-gray-600">
-                    <span className="inline-block bg-orange-100 text-orange-700 px-2 py-1 rounded text-xs font-medium">NotebookLM</span>
+                  <td className="border border-gray-200/50 px-4 py-3">
+                    <div className="flex justify-center">
+                      <span className="inline-flex items-center bg-orange-100 text-orange-700 px-2.5 py-1 rounded-full text-xs font-semibold shadow-sm">NotebookLM</span>
+                    </div>
                   </td>
                   <td className="border border-gray-200/50 px-4 py-3 text-gray-600 text-sm italic">
                     Sử dụng tính năng Audio Overview phân tích tài liệu để tạo file âm thanh thảo luận bài học.
