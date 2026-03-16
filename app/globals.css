@@ -122,6 +122,45 @@
   body {
     @apply bg-background text-foreground;
   }
+
+  /* ============================================
+     FONT RENDERING FIXES - Production Ready
+     ============================================ */
+
+  /* Đảm bảo font load đúng cách ở production */
+  html {
+    font-display: swap;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  /*
+   * Fix dấu tiếng Việt in hoa bị cắt (clipping)
+   * Nguyên nhân: line-height mặc định quá nhỏ cho uppercase có dấu
+   * Giải pháp: tăng line-height và thêm padding dọc
+   */
+  h1, h2, h3, h4, h5, h6 {
+    line-height: 1.4;
+    padding-top: 0.15em;
+    padding-bottom: 0.05em;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+  }
+
+  /* Text paragraph - đảm bảo dấu không bị cắt */
+  p, span, a, li {
+    line-height: 1.6;
+    overflow-wrap: break-word;
+  }
+
+  /*
+   * Fix text bị rớt dòng (orphan text)
+   * Dùng text-wrap: balance cho heading ngắn
+   */
+  h1, h2, h3 {
+    text-wrap: balance;
+  }
 }
 
 @layer utilities {

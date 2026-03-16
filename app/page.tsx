@@ -629,14 +629,17 @@ function HomeTab({ setActiveTab }: { setActiveTab: (tab: string) => void }) {
           <section className="py-20 sm:py-28 px-4">
             <div className="max-w-4xl mx-auto text-center">
               {/* Animated gradient text effect - Balanced spacing for 3 lines */}
-              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6 drop-shadow-lg leading-[1.3] space-y-3">
-                <div className="bg-gradient-to-r from-amber-200 via-yellow-400 to-amber-200 bg-clip-text text-transparent animate-pulse">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6 drop-shadow-lg py-4 leading-[1.6] space-y-3">
+                {/* Dòng 1: whitespace-nowrap + min-w để giữ trên 1 dòng */}
+                <div className="whitespace-nowrap min-w-fit inline-block pt-2 bg-gradient-to-r from-amber-200 via-yellow-400 to-amber-200 bg-clip-text text-transparent animate-pulse">
                   LIÊN MINH CÔNG – NÔNG – TRÍ THỨC
                 </div>
-                <div className="bg-gradient-to-r from-amber-200 via-yellow-400 to-amber-200 bg-clip-text text-transparent">
+                {/* Dòng 2: text-balance cho cân bằng */}
+                <div className="pt-2 text-balance bg-gradient-to-r from-amber-200 via-yellow-400 to-amber-200 bg-clip-text text-transparent">
                   VÀ KINH TẾ TƯ NHÂN:
                 </div>
-                <div className="bg-gradient-to-r from-amber-200 via-yellow-400 to-amber-200 bg-clip-text text-transparent">
+                {/* Dòng 3: whitespace-nowrap + pt-2 để không bị cắt dấu mũ/chấm hỏi */}
+                <div className="whitespace-nowrap pt-2 bg-gradient-to-r from-amber-200 via-yellow-400 to-amber-200 bg-clip-text text-transparent">
                   KẾ THỪA HAY THAY ĐỔI?
                 </div>
               </h2>
