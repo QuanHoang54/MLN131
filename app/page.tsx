@@ -831,31 +831,40 @@ function HomeTab({ setActiveTab }: { setActiveTab: (tab: string) => void }) {
 function LibraryTab() {
   return (
     <div className="relative w-full min-h-screen bg-[url('/On-tap-mon-chu-nghia-Mac-–-Lenin-1-1024x558.png')] bg-cover bg-center bg-no-repeat bg-fixed">
-      {/* Overlay làm mờ ảnh nền */}
-      <div className="absolute inset-0 bg-black/50 backdrop-blur-sm"></div>
+      {/* Animated gradient overlay */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/60 backdrop-blur-sm"></div>
+
+      {/* Floating particles effect */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-1/4 left-1/4 w-2 h-2 bg-white/20 rounded-full animate-float"></div>
+        <div className="absolute top-1/3 right-1/4 w-3 h-3 bg-white/10 rounded-full animate-float" style={{ animationDelay: '1s' }}></div>
+        <div className="absolute bottom-1/4 left-1/3 w-2 h-2 bg-white/15 rounded-full animate-float" style={{ animationDelay: '2s' }}></div>
+      </div>
 
       {/* Nội dung chính */}
       <div className="relative z-10 max-w-6xl mx-auto px-4 py-12">
-        <h2 className="text-2xl sm:text-3xl font-bold text-white text-center mb-4 drop-shadow-lg">
+        {/* Animated title */}
+        <h2 className="text-2xl sm:text-3xl font-bold text-white text-center mb-4 drop-shadow-lg animate-fade-in-up">
           Nội dung bài giảng
         </h2>
 
-        {/* Scroll Instruction */}
+        {/* Scroll Instruction with enhanced animation */}
         <div className="text-center mb-12">
-          <p className="text-white/80 mb-2">Hãy cuộn trang từ từ xuống dưới</p>
-          <ChevronDown className="w-6 h-6 text-white/60 mx-auto animate-bounce" />
+          <p className="text-white/80 mb-2 animate-pulse">Hãy cuộn trang từ từ xuống dưới</p>
+          <ChevronDown className="w-8 h-8 text-white/60 mx-auto animate-bounce" />
         </div>
 
         <div className="space-y-16">
           {lessonsData.map((lesson, index) => (
             <ScrollBlock key={index} index={index}>
-              <div className="bg-white/95 backdrop-blur rounded-2xl shadow-xl overflow-hidden">
-                {/* Part Header */}
-                <div className="bg-gradient-to-r from-red-700 to-red-600 p-6">
-                  <span className="inline-block bg-amber-400 text-red-900 text-xs font-bold px-3 py-1 rounded-full mb-2">
+              <div className="bg-white/95 backdrop-blur rounded-2xl shadow-xl overflow-hidden group hover:shadow-2xl transition-all duration-500 hover:scale-[1.01]">
+                {/* Part Header with animated gradient */}
+                <div className="bg-gradient-to-r from-red-700 via-red-600 to-red-700 p-6 relative overflow-hidden">
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000"></div>
+                  <span className="inline-block bg-amber-400 text-red-900 text-xs font-bold px-3 py-1 rounded-full mb-2 hover:scale-110 transition-transform">
                     {lesson.part}
                   </span>
-                  <h3 className="text-white font-bold text-xl leading-tight">{lesson.title}</h3>
+                  <h3 className="text-white font-bold text-xl leading-tight group-hover:text-amber-200 transition-colors">{lesson.title}</h3>
                 </div>
                 <div className="p-6">
                   <LessonContent lesson={lesson} />
@@ -1065,25 +1074,39 @@ function FlashcardTab() {
 // ==================== APPENDIX TAB (AI USAGE) ====================
 function AppendixTab() {
   return (
-    <div className="min-h-screen bg-[url('/backai.avif')] bg-cover bg-center bg-fixed py-8 px-4">
-      <div className="max-w-4xl mx-auto space-y-8">
-        {/* Header */}
+    <div className="min-h-screen bg-[url('/backai.avif')] bg-cover bg-center bg-fixed py-8 px-4 relative overflow-hidden">
+      {/* Animated gradient overlay */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/30 pointer-events-none"></div>
+
+      {/* Floating AI particles */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-20 left-10 w-2 h-2 bg-purple-400/30 rounded-full animate-float"></div>
+        <div className="absolute top-40 right-20 w-3 h-3 bg-cyan-400/20 rounded-full animate-float" style={{ animationDelay: '1.5s' }}></div>
+        <div className="absolute bottom-40 left-1/4 w-2 h-2 bg-amber-400/25 rounded-full animate-float" style={{ animationDelay: '0.5s' }}></div>
+        <div className="absolute bottom-20 right-1/3 w-3 h-3 bg-emerald-400/20 rounded-full animate-float" style={{ animationDelay: '2s' }}></div>
+      </div>
+
+      <div className="max-w-4xl mx-auto space-y-8 relative z-10">
+        {/* Header with animated glow */}
         <div className="text-center">
-          <h2 className="text-2xl sm:text-3xl font-bold text-white mb-2" style={{ textShadow: "0 2px 4px rgba(0,0,0,0.5)" }}>
-            Phụ lục - AI Usage
-          </h2>
-          <p className="text-black-100">Báo cáo minh bạch liêm chính học thuật</p>
+          <div className="inline-block">
+            <h2 className="text-2xl sm:text-3xl font-bold text-white mb-2 animate-pulse" style={{ textShadow: "0 2px 4px rgba(0,0,0,0.5)" }}>
+              Phụ lục - AI Usage
+            </h2>
+            <div className="h-1 w-24 bg-gradient-to-r from-transparent via-amber-400 to-transparent mx-auto animate-pulse"></div>
+          </div>
+          <p className="text-white/80 mt-2">Báo cáo minh bạch liêm chính học thuật</p>
         </div>
 
         {/* Phần 1: Lời cam kết */}
-        <div className="bg-white/90 backdrop-blur-md rounded-2xl shadow-lg border border-white/30 p-6 sm:p-8" style={{ boxShadow: "0 10px 25px rgba(0, 0, 0, 0.2)" }}>
+        <div className="bg-white/90 backdrop-blur-md rounded-2xl shadow-lg border border-white/30 p-6 sm:p-8 group hover:shadow-2xl transition-all duration-500" style={{ boxShadow: "0 10px 25px rgba(0, 0, 0, 0.2)" }}>
           <div className="flex items-center gap-3 mb-4">
-            <div className="w-10 h-10 bg-red-100 rounded-full flex items-center justify-center">
+            <div className="w-10 h-10 bg-red-100 rounded-full flex items-center justify-center group-hover:scale-110 group-hover:rotate-12 transition-all duration-300">
               <Heart className="w-5 h-5 text-red-600" />
             </div>
-            <h3 className="text-xl font-bold text-gray-800">1. Lời cam kết liêm chính học thuật</h3>
+            <h3 className="text-xl font-bold text-gray-800 group-hover:text-red-700 transition-colors">1. Lời cam kết liêm chính học thuật</h3>
           </div>
-          <blockquote className="border-l-4 border-red-500 pl-6 py-2 bg-red-50 rounded-r-lg">
+          <blockquote className="border-l-4 border-red-500 pl-6 py-2 bg-red-50 rounded-r-lg group-hover:bg-red-100 transition-colors">
             <p className="text-gray-800 text-lg leading-relaxed italic">
               "Nhóm thực hiện dự án cam kết: Trí tuệ nhân tạo (AI) chỉ đóng vai trò công cụ hỗ trợ (lên ý tưởng sơ đồ, khởi tạo mã nguồn, soạn ngân hàng câu hỏi). AI không thay thế hoàn toàn năng lực tư duy và quá trình làm việc của sinh viên. Toàn bộ nội dung và mã nguồn cuối cùng đều đã được sinh viên trực tiếp kiểm duyệt, đối chiếu và tinh chỉnh."
             </p>
@@ -1091,7 +1114,7 @@ function AppendixTab() {
         </div>
 
         {/* Phần 2: Mô hình làm việc */}
-        <div className="bg-white/90 backdrop-blur-md rounded-2xl shadow-lg border border-white/30 p-6 sm:p-8" style={{ boxShadow: "0 10px 25px rgba(0, 0, 0, 0.2)" }}>
+        <div className="bg-white/90 backdrop-blur-md rounded-2xl shadow-lg border border-white/30 p-6 sm:p-8 group hover:shadow-2xl transition-all duration-500" style={{ boxShadow: "0 10px 25px rgba(0, 0, 0, 0.2)" }}>
           <div className="flex items-center gap-3 mb-6">
             <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center">
               <Layers className="w-5 h-5 text-blue-600" />
@@ -1103,86 +1126,86 @@ function AppendixTab() {
           <div className="flex flex-col md:flex-row items-center justify-between gap-3 md:gap-2">
             {/* Step 1: Sinh viên */}
             <div className="flex-1 w-full">
-              <div className="bg-amber-50/90 backdrop-blur-sm rounded-xl p-4 text-center border border-amber-200 shadow-sm hover:-translate-y-1 hover:shadow-lg transition-all duration-300">
-                <div className="w-12 h-12 bg-amber-400 rounded-full flex items-center justify-center mx-auto mb-3">
+              <div className="bg-amber-50/90 backdrop-blur-sm rounded-xl p-4 text-center border border-amber-200 shadow-sm hover:-translate-y-2 hover:shadow-xl hover:shadow-amber-500/20 transition-all duration-300 group/card">
+                <div className="w-12 h-12 bg-amber-400 rounded-full flex items-center justify-center mx-auto mb-3 group-hover/card:scale-110 group-hover/card:rotate-12 transition-all duration-300">
                   <span className="text-white font-bold">SV</span>
                 </div>
-                <h4 className="font-bold text-gray-800 mb-2">Người dùng (Sinh viên)</h4>
-                <p className="text-sm text-gray-600">Lên ý tưởng kịch bản, cung cấp tài liệu gốc, định hướng sản phẩm và chịu trách nhiệm kiểm duyệt cuối cùng.</p>
+                <h4 className="font-bold text-gray-800 mb-2 group-hover/card:text-amber-700 transition-colors">Người dùng (Sinh viên)</h4>
+                <p className="text-sm text-gray-600 group-hover/card:text-gray-800 transition-colors">Lên ý tưởng kịch bản, cung cấp tài liệu gốc, định hướng sản phẩm và chịu trách nhiệm kiểm duyệt cuối cùng.</p>
               </div>
             </div>
 
             {/* Arrow 1 */}
-            <ChevronRight className="w-6 h-6 text-gray-400 rotate-90 md:rotate-0 flex-shrink-0" />
+            <ChevronRight className="w-6 h-6 text-gray-400 rotate-90 md:rotate-0 flex-shrink-0 animate-pulse" />
 
             {/* Step 2: Gemini AI */}
             <div className="flex-1 w-full">
-              <div className="bg-purple-50/90 backdrop-blur-sm rounded-xl p-4 text-center border border-purple-200 shadow-sm hover:-translate-y-1 hover:shadow-lg transition-all duration-300">
-                <div className="w-12 h-12 bg-purple-500 rounded-full flex items-center justify-center mx-auto mb-3">
+              <div className="bg-purple-50/90 backdrop-blur-sm rounded-xl p-4 text-center border border-purple-200 shadow-sm hover:-translate-y-2 hover:shadow-xl hover:shadow-purple-500/20 transition-all duration-300 group/card">
+                <div className="w-12 h-12 bg-purple-500 rounded-full flex items-center justify-center mx-auto mb-3 group-hover/card:scale-110 group-hover/card:rotate-12 transition-all duration-300">
                   <span className="text-white font-bold">G</span>
                 </div>
-                <h4 className="font-bold text-gray-800 mb-2">Gemini AI</h4>
-                <p className="text-sm text-gray-600">Cố vấn nội dung & Kiến trúc sư. Mô phỏng ý tưởng, tóm tắt tài liệu, biên soạn nội dung.</p>
+                <h4 className="font-bold text-gray-800 mb-2 group-hover/card:text-purple-700 transition-colors">Gemini AI</h4>
+                <p className="text-sm text-gray-600 group-hover/card:text-gray-800 transition-colors">Cố vấn nội dung & Kiến trúc sư. Mô phỏng ý tưởng, tóm tắt tài liệu, biên soạn nội dung.</p>
               </div>
             </div>
 
             {/* Arrow 2 */}
-            <ChevronRight className="w-6 h-6 text-gray-400 rotate-90 md:rotate-0 flex-shrink-0" />
+            <ChevronRight className="w-6 h-6 text-gray-400 rotate-90 md:rotate-0 flex-shrink-0 animate-pulse" />
 
             {/* Step 3: Claude AI */}
             <div className="flex-1 w-full">
-              <div className="bg-cyan-50/90 backdrop-blur-sm rounded-xl p-4 text-center border border-cyan-200 shadow-sm hover:-translate-y-1 hover:shadow-lg transition-all duration-300">
-                <div className="w-12 h-12 bg-cyan-500 rounded-full flex items-center justify-center mx-auto mb-3">
+              <div className="bg-cyan-50/90 backdrop-blur-sm rounded-xl p-4 text-center border border-cyan-200 shadow-sm hover:-translate-y-2 hover:shadow-xl hover:shadow-cyan-500/20 transition-all duration-300 group/card">
+                <div className="w-12 h-12 bg-cyan-500 rounded-full flex items-center justify-center mx-auto mb-3 group-hover/card:scale-110 group-hover/card:rotate-12 transition-all duration-300">
                   <span className="text-white font-bold">C</span>
                 </div>
-                <h4 className="font-bold text-gray-800 mb-2">Claude AI</h4>
-                <p className="text-sm text-gray-600">Lập trình viên. Thực hiện hóa ý tưởng, viết mã nguồn React/Next.js theo prompt.</p>
+                <h4 className="font-bold text-gray-800 mb-2 group-hover/card:text-cyan-700 transition-colors">Claude AI</h4>
+                <p className="text-sm text-gray-600 group-hover/card:text-gray-800 transition-colors">Lập trình viên. Thực hiện hóa ý tưởng, viết mã nguồn React/Next.js theo prompt.</p>
               </div>
             </div>
 
             {/* Arrow 3 */}
-            <ChevronRight className="w-6 h-6 text-gray-400 rotate-90 md:rotate-0 flex-shrink-0" />
+            <ChevronRight className="w-6 h-6 text-gray-400 rotate-90 md:rotate-0 flex-shrink-0 animate-pulse" />
 
             {/* Step 4: NotebookLM */}
             <div className="flex-1 w-full">
-              <div className="bg-orange-50/90 backdrop-blur-sm rounded-xl p-4 text-center border border-orange-200 shadow-sm hover:-translate-y-1 hover:shadow-lg transition-all duration-300">
-                <div className="w-12 h-12 bg-orange-500 rounded-full flex items-center justify-center mx-auto mb-3">
+              <div className="bg-orange-50/90 backdrop-blur-sm rounded-xl p-4 text-center border border-orange-200 shadow-sm hover:-translate-y-2 hover:shadow-xl hover:shadow-orange-500/20 transition-all duration-300 group/card">
+                <div className="w-12 h-12 bg-orange-500 rounded-full flex items-center justify-center mx-auto mb-3 group-hover/card:scale-110 group-hover/card:rotate-12 transition-all duration-300">
                   <Film className="w-5 h-5 text-white" />
                 </div>
-                <h4 className="font-bold text-gray-800 mb-2">NotebookLM</h4>
-                <p className="text-sm text-gray-600">Sản xuất Media. Phân tích tài liệu gốc, tự động tạo Audio/Video podcast thảo luận bài học.</p>
+                <h4 className="font-bold text-gray-800 mb-2 group-hover/card:text-orange-700 transition-colors">NotebookLM</h4>
+                <p className="text-sm text-gray-600 group-hover/card:text-gray-800 transition-colors">Sản xuất Media. Phân tích tài liệu gốc, tự động tạo Audio/Video podcast thảo luận bài học.</p>
               </div>
             </div>
 
             {/* Arrow 4 */}
-            <ChevronRight className="w-6 h-6 text-gray-400 rotate-90 md:rotate-0 flex-shrink-0" />
+            <ChevronRight className="w-6 h-6 text-gray-400 rotate-90 md:rotate-0 flex-shrink-0 animate-pulse" />
 
             {/* Step 5: Nguồn kiểm chứng */}
             <div className="flex-1 w-full">
-              <div className="bg-green-50/90 backdrop-blur-sm rounded-xl p-4 text-center border border-green-200 shadow-sm hover:-translate-y-1 hover:shadow-lg transition-all duration-300">
-                <div className="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-3">
+              <div className="bg-green-50/90 backdrop-blur-sm rounded-xl p-4 text-center border border-green-200 shadow-sm hover:-translate-y-2 hover:shadow-xl hover:shadow-green-500/20 transition-all duration-300 group/card">
+                <div className="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-3 group-hover/card:scale-110 group-hover/card:rotate-12 transition-all duration-300">
                   <span className="text-white font-bold">Ref</span>
                 </div>
-                <h4 className="font-bold text-gray-800 mb-2">Nguồn kiểm chứng</h4>
-                <p className="text-sm text-gray-600">Dữ liệu gốc và chân lý đối chiếu. Kiểm tra lại đáp án theo giáo trình.</p>
+                <h4 className="font-bold text-gray-800 mb-2 group-hover/card:text-green-700 transition-colors">Nguồn kiểm chứng</h4>
+                <p className="text-sm text-gray-600 group-hover/card:text-gray-800 transition-colors">Dữ liệu gốc và chân lý đối chiếu. Kiểm tra lại đáp án theo giáo trình.</p>
               </div>
             </div>
           </div>
         </div>
 
         {/* Phần 3: Bảng minh bạch AI */}
-        <div className="bg-white/90 backdrop-blur-md rounded-2xl shadow-lg border border-white/30 p-6 sm:p-8" style={{ boxShadow: "0 10px 25px rgba(0, 0, 0, 0.2)" }}>
+        <div className="bg-white/90 backdrop-blur-md rounded-2xl shadow-lg border border-white/30 p-6 sm:p-8 group hover:shadow-2xl transition-all duration-500" style={{ boxShadow: "0 10px 25px rgba(0, 0, 0, 0.2)" }}>
           <div className="flex items-center gap-3 mb-6">
-            <div className="w-10 h-10 bg-emerald-100 rounded-full flex items-center justify-center">
+            <div className="w-10 h-10 bg-emerald-100 rounded-full flex items-center justify-center group-hover:scale-110 group-hover:rotate-12 transition-all duration-300">
               <Star className="w-5 h-5 text-emerald-600" />
             </div>
-            <h3 className="text-xl font-bold text-gray-800">3. Bảng minh bạch sử dụng AI (AI Usage Tracker)</h3>
+            <h3 className="text-xl font-bold text-gray-800 group-hover:text-emerald-700 transition-colors">3. Bảng minh bạch sử dụng AI (AI Usage Tracker)</h3>
           </div>
 
           <div className="overflow-x-auto">
             <table className="w-full border-collapse">
               <thead>
-                <tr className="bg-gray-100/90 backdrop-blur-sm">
+                <tr className="bg-gradient-to-r from-gray-100 to-gray-50">
                   <th className="border border-gray-200/50 px-4 py-3 text-left font-bold text-gray-800">Tính năng</th>
                   <th className="border border-gray-200/50 px-4 py-3 text-left font-bold text-gray-800">Công cụ AI</th>
                   <th className="border border-gray-200/50 px-4 py-3 text-left font-bold text-gray-800">Mục đích & Prompt chính</th>
@@ -1190,7 +1213,7 @@ function AppendixTab() {
                 </tr>
               </thead>
               <tbody>
-                <tr className="hover:bg-gray-50/80">
+                <tr className="hover:bg-emerald-50/50 transition-colors duration-300">
                   <td className="border border-gray-200/50 px-4 py-3 text-gray-700 font-medium">
                     Minigame Mở rương kho báu
                   </td>
@@ -1205,7 +1228,7 @@ function AppendixTab() {
                     Tích hợp logic game over, kiểm tra lại đáp án theo giáo trình.
                   </td>
                 </tr>
-                <tr className="hover:bg-gray-50/80">
+                <tr className="hover:bg-gradient-to-r hover:from-purple-50 hover:to-cyan-50 transition-all duration-300">
                   <td className="border border-gray-200/50 px-4 py-3 text-gray-700 font-medium">
                     Flashcard Ôn tập
                   </td>
@@ -1220,7 +1243,7 @@ function AppendixTab() {
                     Tinh chỉnh CSS cho vừa màn hình điện thoại, rút gọn chữ trên thẻ.
                   </td>
                 </tr>
-                <tr className="hover:bg-gray-50/80">
+                <tr className="hover:bg-gradient-to-r hover:from-purple-50 hover:to-cyan-50 transition-all duration-300">
                   <td className="border border-gray-200/50 px-4 py-3 text-gray-700 font-medium">
                     Cấu trúc UI/UX Trang chủ
                   </td>
@@ -1234,7 +1257,7 @@ function AppendixTab() {
                     Thay đổi màu sắc theo bộ nhận diện của trường.
                   </td>
                 </tr>
-                <tr className="hover:bg-gray-50/80">
+                <tr className="hover:bg-gradient-to-r hover:from-purple-50 hover:to-cyan-50 transition-all duration-300">
                   <td className="border border-gray-200/50 px-4 py-3 text-gray-700 font-medium">
                     Video Podcast/Tóm tắt bài học
                   </td>
@@ -1254,24 +1277,24 @@ function AppendixTab() {
         </div>
 
         {/* Phần 4: Nguồn tài liệu */}
-        <div className="bg-white/90 backdrop-blur-md rounded-2xl shadow-lg border border-white/30 p-6 sm:p-8" style={{ boxShadow: "0 10px 25px rgba(0, 0, 0, 0.2)" }}>
+        <div className="bg-white/90 backdrop-blur-md rounded-2xl shadow-lg border border-white/30 p-6 sm:p-8 group hover:shadow-2xl transition-all duration-500" style={{ boxShadow: "0 10px 25px rgba(0, 0, 0, 0.2)" }}>
           <div className="flex items-center gap-3 mb-4">
-            <div className="w-10 h-10 bg-indigo-100 rounded-full flex items-center justify-center">
+            <div className="w-10 h-10 bg-indigo-100 rounded-full flex items-center justify-center group-hover:scale-110 group-hover:rotate-12 transition-all duration-300">
               <MapPin className="w-5 h-5 text-indigo-600" />
             </div>
-            <h3 className="text-xl font-bold text-gray-800">4. Nguồn tài liệu kiểm chứng</h3>
+            <h3 className="text-xl font-bold text-gray-800 group-hover:text-indigo-700 transition-colors">4. Nguồn tài liệu kiểm chứng</h3>
           </div>
-          <div className="bg-indigo-50/90 backdrop-blur-sm rounded-xl p-6 border border-indigo-200">
+          <div className="bg-indigo-50/90 backdrop-blur-sm rounded-xl p-6 border border-indigo-200 group-hover:bg-indigo-100 transition-colors">
             <p className="text-gray-700 leading-relaxed">
               Tất cả thông tin do AI sinh ra (đặc biệt là nội dung lý luận và câu hỏi trắc nghiệm) đều được sinh viên đối chiếu 100% với tài liệu chính thống:
             </p>
             <ul className="mt-4 space-y-2 text-gray-700">
-              <li className="flex items-start gap-2">
-                <CheckCircle2 className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" />
+              <li className="flex items-start gap-2 group/item">
+                <CheckCircle2 className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0 group-hover/item:scale-110 transition-transform" />
                 <span>Giáo trình <strong>Chủ nghĩa xã hội khoa học</strong> (Dành cho bậc đại học - Không chuyên lý luận chính trị) - Xuất bản năm 2019.</span>
               </li>
-              <li className="flex items-start gap-2">
-                <CheckCircle2 className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" />
+              <li className="flex items-start gap-2 group/item">
+                <CheckCircle2 className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0 group-hover/item:scale-110 transition-transform" />
                 <span>Các slide bài giảng của giảng viên phụ trách môn học.</span>
               </li>
             </ul>
@@ -1279,8 +1302,8 @@ function AppendixTab() {
         </div>
 
         {/* Footer */}
-        <div className="text-center text-black/70 text-sm py-4" style={{ textShadow: "0 1px 2px rgba(0,0,0,0.5)" }}>
-          <p>© 2026 - Dự án học tập môn MLN131 - Chủ nghĩa xã hội khoa học</p>
+        <div className="text-center text-white/80 text-sm py-4">
+          <p className="animate-pulse">© 2026 - Dự án học tập môn MLN131 - Chủ nghĩa xã hội khoa học</p>
         </div>
       </div>
     </div>
