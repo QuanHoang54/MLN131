@@ -1,6 +1,7 @@
 "use client"
 
-import { useState, useEffect, useRef, useCallback } from "react"
+import { useState, useEffect, useRef, useCallback, useMemo } from "react"
+import { generateQuiz, questionsBank } from "./questions"
 import {
   Home,
   BookOpen,
@@ -20,6 +21,10 @@ import {
   Layers,
   Handshake,
   TrendingUp,
+  Bookmark,
+  ChevronLeft,
+  ChevronRight,
+  FileText,
 } from "lucide-react"
 import { cn } from "@/lib/utils"
 
@@ -34,10 +39,15 @@ const lessonsData = [
         subsections: [
           {
             subheading: "1.1. Khái niệm cơ cấu xã hội và cơ cấu xã hội - giai cấp",
-            imageRight: "/cocauxahoi.png",
+            imageDual: [
+              { src: "/cocauxahoi.png", alt: "Hình người 3D xếp hình" },
+              { src: "/5lop.png", alt: "Sơ đồ 5 thành phần cơ cấu xã hội" }
+            ],
+            imageCenter: "/giai-cap-la-gi_0906142048.jpeg",
+            imageCaption: "Minh họa phân tầng giai cấp trong xã hội",
             definitions: [
               { term: "Cơ cấu xã hội", description: "Là những cộng đồng người cùng toàn bộ những mối quan hệ xã hội của các cộng đồng ấy tạo nên. Xã hội không phải là một khối đồng nhất mà bao gồm nhiều thành phần cấu tạo thành như: Cơ cấu dân cư, cơ cấu nghề nghiệp, cơ cấu dân tộc, cơ cấu tôn giáo và cơ cấu giai cấp." },
-              { term: "Cơ cấu xã hội - giai cấp", description: "Là hệ thống các giai cấp, tầng lớp xã hội tồn tại khách quan trong một chế độ xã hội nhất định. Hệ thống này được hình thành thông qua những mối quan hệ cốt lõi: Sở hữu tư liệu sản xuất, Tổ chức quản lý quá trình sản xuất, Địa vị chính trị - xã hội giữa các giai cấp, tầng lớp.", imageCenter: "/giai-cap-la-gi_0906142048.jpeg", imageCaption: "Minh họa phân tầng giai cấp trong xã hội" }
+              { term: "Cơ cấu xã hội - giai cấp", description: "Là hệ thống các giai cấp, tầng lớp xã hội tồn tại khách quan trong một chế độ xã hội nhất định. Hệ thống này được hình thành thông qua những mối quan hệ cốt lõi: Sở hữu tư liệu sản xuất, Tổ chức quản lý quá trình sản xuất, Địa vị chính trị - xã hội giữa các giai cấp, tầng lớp." }
             ]
           },
           {
@@ -91,6 +101,11 @@ const lessonsData = [
               "Xây dựng cơ sở vật chất: Khối liên minh xuất phát từ chính nhu cầu xây dựng nền tảng vật chất - kỹ thuật cần thiết cho chủ nghĩa xã hội."
             ]
           }
+        ],
+        allianceImages: [
+          { src: "/congnghiep.png"},
+          { src: "/nongnghiep.png"},
+          { src: "/fpt.png"}
         ]
       },
       {
@@ -112,11 +127,12 @@ const lessonsData = [
         features: [
           { title: "Sự biến đổi gắn liền với cơ cấu kinh tế", description: "Chuyển từ kinh tế kế hoạch hóa tập trung sang kinh tế thị trường định hướng XHCN làm thay đổi sâu sắc vị trí, vai trò của các giai tầng." },
           { title: "Tính đa dạng và đan xen", description: "Tồn tại nhiều thành phần kinh tế dẫn đến sự đa dạng trong các tầng lớp xã hội; các giai tầng vừa hợp tác, vừa đấu tranh trong nội bộ khối đại đoàn kết." },
-          { title: "Sự biến đổi trong nội bộ từng giai cấp, tầng lớp", description: "Xuất hiện nhiều nhóm xã hội mới, đặc biệtát triển là sự ph mạnh mẽ của đội ngũ doanh nhân." }
+          { title: "Sự biến đổi trong nội bộ từng giai cấp, tầng lớp", description: "Xuất hiện nhiều nhóm xã hội mới, đặc biệt là sự phát triển mạnh mẽ của đội ngũ doanh nhân." }
         ]
       },
       {
         heading: "2. Các giai cấp, tầng lớp trong cơ cấu xã hội Việt Nam hiện nay",
+        imageAfterClasses: "/phan3.png",
         classes: [
           { name: "Giai cấp công nhân", description: "Lực lượng đi đầu, nắm quyền lãnh đạo cách mạng thông qua Đảng Cộng sản; nòng cốt trong khối liên minh.", color: "bg-blue-50 border-l-blue-500" },
           { name: "Giai cấp nông dân", description: "Lực lượng đông đảo, có vị trí chiến lược trong sự nghiệp phát triển nông nghiệp và nông thôn mới.", color: "bg-green-50 border-l-green-500" },
@@ -191,120 +207,30 @@ const lessonsData = [
   },
 ]
 
-const quizData = [
-  {
-    id: 1,
-    question: "Cơ cấu xã hội - giai cấp hình thành qua quan hệ cốt lõi nào?",
-    options: [
-      "Quan hệ huyết thống và gia đình",
-      "Sở hữu TLSX, Tổ chức quản lý, Địa vị chính trị",
-      "Quan hệ văn hóa và giáo dục",
-      "Quan hệ ngoại giao quốc tế",
-    ],
-    correctIndex: 1,
-  },
-  {
-    id: 2,
-    question: "Trong các loại hình cơ cấu, loại nào chi phối các cơ cấu khác?",
-    options: [
-      "Cơ cấu dân số",
-      "Cơ cấu nghề nghiệp",
-      "Cơ cấu xã hội - giai cấp",
-      "Cơ cấu lãnh thổ",
-    ],
-    correctIndex: 2,
-  },
-  {
-    id: 3,
-    question: "Góc độ nào mang tính quyết định nhất đối với khối liên minh?",
-    options: [
-      "Góc độ Văn hóa",
-      "Góc độ Chính trị",
-      "Góc độ Kinh tế",
-      "Góc độ Xã hội",
-    ],
-    correctIndex: 2,
-  },
-  {
-    id: 4,
-    question: "Điểm nhấn thực tiễn hiện nay ở VN là sự phát triển của lực lượng nào?",
-    options: [
-      "Giai cấp nông dân",
-      "Đội ngũ doanh nhân",
-      "Tầng lớp tiểu thương",
-      "Lực lượng vũ trang",
-    ],
-    correctIndex: 1,
-  },
-  {
-    id: 5,
-    question: "Việc đề cao kinh tế tư nhân có mâu thuẫn với lý luận Mác-Lênin không?",
-    options: [
-      "Có mâu thuẫn hoàn toàn",
-      "Có mâu thuẫn một phần",
-      "Hoàn toàn KHÔNG mâu thuẫn",
-      "Chưa có kết luận",
-    ],
-    correctIndex: 2,
-  },
-  {
-    id: 6,
-    question: "Liên minh công - nông - trí thức là nền tảng của khối nào?",
-    options: [
-      "Khối kinh tế tư nhân",
-      "Khối đại đoàn kết toàn dân tộc",
-      "Khối doanh nghiệp nhà nước",
-      "Khối hành chính công",
-    ],
-    correctIndex: 1,
-  },
-  {
-    id: 7,
-    question: "Giai cấp nào được xem là lực lượng đi đầu trong CNH-HĐH?",
-    options: [
-      "Giai cấp nông dân",
-      "Đội ngũ trí thức",
-      "Giai cấp công nhân",
-      "Tầng lớp doanh nhân",
-    ],
-    correctIndex: 2,
-  },
-  {
-    id: 8,
-    question: "Kinh tế nhà nước ở Việt Nam giữ vai trò gì?",
-    options: [
-      "Vai trò phụ thuộc",
-      "Vai trò chủ đạo",
-      "Vai trò bổ sung",
-      "Vai trò tạm thời",
-    ],
-    correctIndex: 1,
-  },
-  {
-    id: 9,
-    question: "Quy luật nào là quan hệ cơ bản, quyết định địa vị giai cấp?",
-    options: [
-      "Quan hệ phân phối thu nhập",
-      "Quan hệ sở hữu tư liệu sản xuất",
-      "Quan hệ tổ chức quản lý",
-      "Quan hệ văn hóa xã hội",
-    ],
-    correctIndex: 1,
-  },
-  {
-    id: 10,
-    question: "Đội ngũ nào là lực lượng mới nổi trong cơ cấu XH Việt Nam?",
-    options: [
-      "Giai cấp công nhân",
-      "Giai cấp nông dân",
-      "Đội ngũ trí thức",
-      "Đội ngũ doanh nhân",
-    ],
-    correctIndex: 3,
-  },
-]
-
 const SECRET_PASSWORD = "08/09/2006"
+
+// ==================== FLASHCARD DATA ====================
+const flashcardData = [
+  { front: "Cơ cấu xã hội là gì?", back: "Là những cộng đồng người cùng toàn bộ những mối quan hệ xã hội của các cộng đồng ấy tạo nên." },
+  { front: "Cơ cấu xã hội - giai cấp được hình thành dựa trên những mối quan hệ cốt lõi nào?", back: "Sở hữu tư liệu sản xuất, tổ chức quản lý sản xuất, và địa vị chính trị - xã hội." },
+  { front: "Loại hình cơ cấu xã hội nào giữ vị trí quan trọng hàng đầu và chi phối các loại hình khác?", back: "Cơ cấu xã hội - giai cấp." },
+  { front: "Yếu tố nào là 'cái gốc' quyết định sự biến đổi của cơ cấu xã hội - giai cấp trong thời kỳ quá độ?", back: "Cơ cấu kinh tế." },
+  { front: "Sự xuất hiện của tầng lớp doanh nhân, tiểu chủ trong thời kỳ quá độ thể hiện quy luật gì?", back: "Quy luật cơ cấu xã hội - giai cấp biến đổi phức tạp, đa dạng." },
+  { front: "Mục tiêu cuối cùng của sự biến đổi cơ cấu xã hội - giai cấp là gì?", back: "Xóa bỏ sự phân hóa, bất bình đẳng, đưa các giai cấp xích lại gần nhau." },
+  { front: "Liên minh giai cấp, tầng lớp được thực hiện nhằm mục đích gì?", back: "Thực hiện nhu cầu, lợi ích chung và tạo động lực thực hiện thắng lợi mục tiêu của CNXH." },
+  { front: "Trong tính tất yếu của khối liên minh, góc độ nào mang tính quyết định nhất?", back: "Góc độ kinh tế." },
+  { front: "Khối liên minh giai cấp bắt buộc phải do lực lượng nào lãnh đạo? Vì sao?", back: "Do Đảng Cộng sản lãnh đạo, để giữ vững định hướng xã hội chủ nghĩa." },
+  { front: "Đặc điểm nổi bật của cơ cấu xã hội - giai cấp ở Việt Nam hiện nay là gì?", back: "Tính đa dạng và đan xen (do tồn tại nhiều thành phần kinh tế)." },
+  { front: "Lực lượng nào là nòng cốt trong khối liên minh ở Việt Nam?", back: "Giai cấp công nhân." },
+  { front: "Đội ngũ nào có vị trí chiến lược trong sự nghiệp phát triển nông nghiệp và nông thôn mới?", back: "Giai cấp nông dân." },
+  { front: "Đội ngũ nào được xem là lực lượng lao động sáng tạo đặc biệt quan trọng trong quá trình CNH, HĐH?", back: "Đội ngũ trí thức." },
+  { front: "Tầng lớp nào đang đóng vai trò quan trọng trong việc huy động nguồn lực và tạo việc làm ở nước ta hiện nay?", back: "Đội ngũ doanh nhân." },
+  { front: "Nội dung nào của liên minh giai cấp, tầng lớp ở Việt Nam là cơ bản và quyết định nhất?", back: "Nội dung Kinh tế (ví dụ: thực hiện liên kết '4 nhà')." },
+  { front: "Công cụ chủ yếu để điều tiết hài hòa lợi ích giữa các giai tầng ở nước ta là gì?", back: "Thể chế kinh tế thị trường định hướng XHCN và khoa học - công nghệ." },
+  { front: "Sự xuất hiện và đề cao kinh tế tư nhân ở nước ta có mâu thuẫn với lý luận Mác - Lênin không?", back: "Hoàn toàn KHÔNG mâu thuẫn. (Tuân theo quy luật Cơ sở hạ tầng quyết định kiến trúc thượng tầng)." },
+  { front: "Điểm KẾ THỪA cốt lõi trong lý luận về liên minh ở Việt Nam hiện nay là gì?", back: "Liên minh Công - Nông - Trí thức vẫn là nền tảng cốt lõi của hệ thống chính trị." },
+  { front: "Sự SÁNG TẠO đặc thù của Việt Nam về nội hàm liên minh là gì?", back: "Chuyển trọng tâm từ đấu tranh chính trị sang hợp tác kinh tế, đồng nhất lợi ích doanh nhân với mục tiêu quốc gia." },
+]
 
 // ==================== COMPONENTS ====================
 
@@ -318,6 +244,8 @@ function Header({
   const tabs = [
     { id: "home", label: "Trang chủ", icon: Home },
     { id: "library", label: "Bài giảng", icon: BookOpen },
+    { id: "flashcard", label: "Ôn tập", icon: Bookmark },
+    { id: "appendix", label: "Phụ lục", icon: FileText },
     { id: "minigame", label: "Minigame", icon: Gamepad2 },
   ]
 
@@ -427,45 +355,46 @@ function LessonContent({ lesson }: { lesson: (typeof lessonsData)[0] }) {
             <div className="space-y-6">
               {section.subsections.map((sub, subIdx) => (
                 <div key={subIdx} className="space-y-3">
-                  <div className="flex flex-col md:flex-row gap-4">
-                    <div className="flex-1">
-                      <h5 className="font-semibold text-gray-800">{sub.subheading}</h5>
+                  <h5 className="font-semibold text-gray-800">{sub.subheading}</h5>
+                  {/* Ảnh 2 cột - hiển thị ngay dưới tiêu đề 1.1 */}
+                  {"imageDual" in sub && sub.imageDual && (
+                    <div className="flex flex-col md:flex-row gap-6 my-4">
+                      {sub.imageDual.map((img, idx) => (
+                        <div key={idx} className="flex-1 bg-white rounded-lg shadow-lg p-3">
+                          <img
+                            src={img.src}
+                            alt={img.alt}
+                            className="w-full h-auto object-contain rounded"
+                          />
+                        </div>
+                      ))}
                     </div>
-                    {"imageRight" in sub && sub.imageRight && (
-                      <div className="md:w-48 lg:w-56 flex-shrink-0">
-                        <img
-                          src={sub.imageRight}
-                          alt="Hình minh họa"
-                          className="w-full rounded-lg shadow-lg"
-                        />
-                      </div>
-                    )}
-                  </div>
+                  )}
                   {"definitions" in sub && sub.definitions && (
                     <div className="space-y-3">
                       {sub.definitions.map((def, defIdx) => (
                         <div key={defIdx} className="bg-blue-50 border-l-4 border-l-blue-500 rounded-r-xl p-4">
                           <h6 className="font-bold text-blue-800 mb-2">{def.term}</h6>
                           <p className="text-blue-700 text-sm leading-relaxed">{def.description}</p>
-                          {"imageCenter" in def && def.imageCenter && (
-                            <div className="mt-4">
-                              <figure className="w-4/5 mx-auto">
-                                <img
-                                  src={def.imageCenter}
-                                  alt="Minh họa"
-                                  className="w-full rounded-lg shadow-lg"
-                                />
-                                {"imageCaption" in def && def.imageCaption && (
-                                  <figcaption className="text-center text-gray-600 text-sm mt-2 italic">
-                                    {def.imageCaption}
-                                  </figcaption>
-                                )}
-                              </figure>
-                            </div>
-                          )}
                         </div>
                       ))}
                     </div>
+                  )}
+
+                  {/* Ảnh center (tháp giai cấp) */}
+                  {"imageCenter" in sub && sub.imageCenter && (
+                    <figure className="w-4/5 mx-auto mt-6">
+                      <img
+                        src={sub.imageCenter}
+                        alt="Minh họa"
+                        className="w-full rounded-lg shadow-lg"
+                      />
+                      {"imageCaption" in sub && sub.imageCaption && (
+                        <figcaption className="text-center text-gray-600 text-sm mt-2 italic">
+                          {sub.imageCaption}
+                        </figcaption>
+                      )}
+                    </figure>
                   )}
                   {"intro" in sub && sub.intro && (
                     <p className="text-gray-700 leading-relaxed">{sub.intro}</p>
@@ -482,6 +411,7 @@ function LessonContent({ lesson }: { lesson: (typeof lessonsData)[0] }) {
                       ))}
                     </div>
                   )}
+
                 </div>
               ))}
             </div>
@@ -526,6 +456,24 @@ function LessonContent({ lesson }: { lesson: (typeof lessonsData)[0] }) {
             </div>
           )}
 
+          {/* Ảnh minh họa Liên minh Công - Nông - Trí thức - hiển thị sau section 2, trước section 3 */}
+          {"allianceImages" in section && (section as any).allianceImages && (
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-5 my-6">
+              {(section as any).allianceImages.map((img: any, imgIdx: number) => (
+                <div key={imgIdx} className="group text-center">
+                  <div className="relative h-52 overflow-hidden rounded-xl shadow-md group-hover:shadow-xl transition-all duration-300 group-hover:scale-[1.02]">
+                    <img
+                      src={img.src}
+                      alt={img.alt}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  <p className="mt-3 font-bold text-gray-800">{img.caption}</p>
+                </div>
+              ))}
+            </div>
+          )}
+
           {"importancePoints" in section && section.importancePoints && (
             <div className="space-y-3">
               {section.importancePoints.map((point, pointIdx) => (
@@ -555,6 +503,17 @@ function LessonContent({ lesson }: { lesson: (typeof lessonsData)[0] }) {
                   <p className="text-gray-700 text-sm leading-relaxed">{cls.description}</p>
                 </div>
               ))}
+            </div>
+          )}
+
+          {/* Ảnh phan3.png - hiển thị sau khối "Các tầng lớp khác" */}
+          {"imageAfterClasses" in section && section.imageAfterClasses && (
+            <div className="my-8">
+              <img
+                src={section.imageAfterClasses}
+                alt="Minh họa phân tầng giai cấp"
+                className="w-full max-w-4xl mx-auto rounded-xl shadow-lg"
+              />
             </div>
           )}
 
@@ -805,6 +764,16 @@ function HomeTab({ setActiveTab }: { setActiveTab: (tab: string) => void }) {
                   </button>
                 </li>
                 <li>
+                  <button onClick={() => handleNavigation("flashcard")} className="text-gray-200 hover:text-yellow-400 flex items-center gap-2 transition-colors">
+                    <ArrowRight className="w-4 h-4" /> Ôn tập
+                  </button>
+                </li>
+                <li>
+                  <button onClick={() => handleNavigation("appendix")} className="text-gray-200 hover:text-yellow-400 flex items-center gap-2 transition-colors">
+                    <ArrowRight className="w-4 h-4" /> Phụ lục
+                  </button>
+                </li>
+                <li>
                   <button onClick={() => handleNavigation("minigame")} className="text-gray-200 hover:text-yellow-400 flex items-center gap-2 transition-colors">
                     <ArrowRight className="w-4 h-4" /> Minigame
                   </button>
@@ -821,6 +790,12 @@ function HomeTab({ setActiveTab }: { setActiveTab: (tab: string) => void }) {
                 </button>
                 <button onClick={() => handleNavigation("minigame")} className="w-full bg-yellow-400 hover:bg-yellow-300 text-red-900 font-bold py-3 px-4 rounded-md transition-colors flex items-center justify-center gap-2">
                   <Gamepad2 className="w-5 h-5" /> CHƠI MINIGAME
+                </button>
+                <button onClick={() => handleNavigation("flashcard")} className="w-full bg-yellow-400 hover:bg-yellow-300 text-red-900 font-bold py-3 px-4 rounded-md transition-colors flex items-center justify-center gap-2">
+                  <Layers className="w-5 h-5" /> ÔN TẬP KIẾN THỨC
+                </button>
+                <button onClick={() => handleNavigation("appendix")} className="w-full bg-yellow-400 hover:bg-yellow-300 text-red-900 font-bold py-3 px-4 rounded-md transition-colors flex items-center justify-center gap-2">
+                  <FileText className="w-5 h-5" /> XEM PHỤ LỤC AI
                 </button>
               </div>
             </div>
@@ -879,6 +854,381 @@ function LibraryTab() {
   )
 }
 
+// ==================== FLASHCARD TAB ====================
+function FlashcardTab() {
+  const [currentIndex, setCurrentIndex] = useState(0)
+  const [isFlipped, setIsFlipped] = useState(false)
+  const [touchStart, setTouchStart] = useState<number | null>(null)
+  const [touchEnd, setTouchEnd] = useState<number | null>(null)
+  const minSwipeDistance = 50
+
+  const currentCard = flashcardData[currentIndex]
+  const progress = `${currentIndex + 1}/${flashcardData.length}`
+
+  const handleFlip = () => {
+    setIsFlipped(!isFlipped)
+  }
+
+  const goToPrev = () => {
+    if (currentIndex > 0) {
+      setCurrentIndex(currentIndex - 1)
+      setIsFlipped(false)
+    }
+  }
+
+  const goToNext = () => {
+    if (currentIndex < flashcardData.length - 1) {
+      setCurrentIndex(currentIndex + 1)
+      setIsFlipped(false)
+    }
+  }
+
+  const handleKeyDown = useCallback((e: KeyboardEvent) => {
+    if (e.key === "ArrowLeft") goToPrev()
+    if (e.key === "ArrowRight") goToNext()
+    if (e.key === " " || e.key === "Enter") handleFlip()
+  }, [currentIndex])
+
+  useEffect(() => {
+    window.addEventListener("keydown", handleKeyDown)
+    return () => window.removeEventListener("keydown", handleKeyDown)
+  }, [handleKeyDown])
+
+  // Touch handlers for swipe
+  const onTouchStart = (e: React.TouchEvent) => {
+    setTouchEnd(null)
+    setTouchStart(e.targetTouches[0].clientX)
+  }
+
+  const onTouchMove = (e: React.TouchEvent) => {
+    setTouchEnd(e.targetTouches[0].clientX)
+  }
+
+  const onTouchEnd = () => {
+    if (!touchStart || !touchEnd) return
+    const distance = touchStart - touchEnd
+    const isLeftSwipe = distance > minSwipeDistance
+    const isRightSwipe = distance < -minSwipeDistance
+    if (isLeftSwipe) goToNext()
+    if (isRightSwipe) goToPrev()
+  }
+
+  return (
+    <div className="min-h-screen bg-[url('/quizlet.jpg')] bg-cover bg-center bg-fixed py-8 px-4">
+      <div className="max-w-2xl mx-auto">
+        {/* Header */}
+        <div className="text-center mb-8">
+          <h2 className="text-2xl sm:text-3xl font-bold text-white mb-2 drop-shadow-lg">
+            Ôn tập kiến thức
+          </h2>
+          <p className="text-gray-200">Click vào thẻ để lật • Kéo hoặc dùng nút để chuyển</p>
+        </div>
+
+        {/* Progress */}
+        <div className="flex justify-center mb-6">
+          <span className="bg-white/20 backdrop-blur-md px-4 py-2 rounded-full shadow-lg text-white font-medium border border-white/30">
+            {progress}
+          </span>
+        </div>
+
+        {/* Flashcard */}
+        <div
+          className="relative w-full max-w-lg mx-auto h-80 sm:h-96 cursor-pointer perspective-1000"
+          onClick={handleFlip}
+          onTouchStart={onTouchStart}
+          onTouchMove={onTouchMove}
+          onTouchEnd={onTouchEnd}
+        >
+          <div
+            className={`relative w-full h-full transition-transform duration-500 transform-style-3d ${
+              isFlipped ? "rotate-y-180" : ""
+            }`}
+            style={{
+              transformStyle: "preserve-3d",
+              transform: isFlipped ? "rotateY(180deg)" : "rotateY(0deg)",
+            }}
+          >
+            {/* Front */}
+            <div
+              className="absolute inset-0 bg-white rounded-2xl p-8 flex flex-col items-center justify-center backface-hidden"
+              style={{
+                backfaceVisibility: "hidden",
+                boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.5)",
+              }}
+            >
+              <div className="absolute top-4 left-4 bg-blue-100 text-blue-800 text-xs font-bold px-3 py-1 rounded-full">
+                Câu hỏi
+              </div>
+              <p className="text-lg sm:text-xl font-semibold text-gray-800 text-center leading-relaxed">
+                {currentCard.front}
+              </p>
+              <p className="text-gray-400 text-sm mt-6">(Click để xem đáp án)</p>
+            </div>
+
+            {/* Back */}
+            <div
+              className="absolute inset-0 bg-gradient-to-br from-emerald-50 to-teal-50 rounded-2xl p-8 flex flex-col items-center justify-center backface-hidden"
+              style={{
+                backfaceVisibility: "hidden",
+                transform: "rotateY(180deg)",
+                boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.5)",
+              }}
+            >
+              <div className="absolute top-4 left-4 bg-emerald-100 text-emerald-800 text-xs font-bold px-3 py-1 rounded-full">
+                Trả lời
+              </div>
+              <p className="text-base sm:text-lg text-gray-800 text-center leading-relaxed">
+                {currentCard.back}
+              </p>
+              <p className="text-gray-400 text-sm mt-6">(Click để quay lại)</p>
+            </div>
+          </div>
+        </div>
+
+        {/* Navigation Buttons */}
+        <div className="flex justify-center items-center gap-6 mt-8">
+          <button
+            onClick={goToPrev}
+            disabled={currentIndex === 0}
+            className={`flex items-center gap-2 px-6 py-3 rounded-xl font-medium transition-all backdrop-blur-md border ${
+              currentIndex === 0
+                ? "bg-white/20 text-white/40 border-white/20 cursor-not-allowed"
+                : "bg-white/20 text-white border-white/40 hover:bg-white/30"
+            }`}
+          >
+            <ChevronLeft className="w-5 h-5" />
+            Quay lại
+          </button>
+
+          <div className="flex gap-2">
+            {flashcardData.map((_, idx) => (
+              <button
+                key={idx}
+                onClick={() => {
+                  setCurrentIndex(idx)
+                  setIsFlipped(false)
+                }}
+                className={`w-3 h-3 rounded-full transition-all ${
+                  idx === currentIndex
+                    ? "bg-emerald-400 w-6"
+                    : "bg-white/40 hover:bg-white/60"
+                }`}
+              />
+            ))}
+          </div>
+
+          <button
+            onClick={goToNext}
+            disabled={currentIndex === flashcardData.length - 1}
+            className={`flex items-center gap-2 px-6 py-3 rounded-xl font-medium transition-all backdrop-blur-md border ${
+              currentIndex === flashcardData.length - 1
+                ? "bg-white/20 text-white/40 border-white/20 cursor-not-allowed"
+                : "bg-emerald-500/60 text-white border-emerald-400/50 hover:bg-emerald-500/80"
+            }`}
+          >
+            Tiếp theo
+            <ChevronRight className="w-5 h-5" />
+          </button>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+// ==================== APPENDIX TAB (AI USAGE) ====================
+function AppendixTab() {
+  return (
+    <div className="min-h-screen bg-[url('/backai.avif')] bg-cover bg-center bg-fixed py-8 px-4">
+      <div className="max-w-4xl mx-auto space-y-8">
+        {/* Header */}
+        <div className="text-center">
+          <h2 className="text-2xl sm:text-3xl font-bold text-white mb-2" style={{ textShadow: "0 2px 4px rgba(0,0,0,0.5)" }}>
+            Phụ lục - AI Usage
+          </h2>
+          <p className="text-black-100">Báo cáo minh bạch liêm chính học thuật</p>
+        </div>
+
+        {/* Phần 1: Lời cam kết */}
+        <div className="bg-white/90 backdrop-blur-md rounded-2xl shadow-lg border border-white/30 p-6 sm:p-8" style={{ boxShadow: "0 10px 25px rgba(0, 0, 0, 0.2)" }}>
+          <div className="flex items-center gap-3 mb-4">
+            <div className="w-10 h-10 bg-red-100 rounded-full flex items-center justify-center">
+              <Heart className="w-5 h-5 text-red-600" />
+            </div>
+            <h3 className="text-xl font-bold text-gray-800">1. Lời cam kết liêm chính học thuật</h3>
+          </div>
+          <blockquote className="border-l-4 border-red-500 pl-6 py-2 bg-red-50 rounded-r-lg">
+            <p className="text-gray-800 text-lg leading-relaxed italic">
+              "Nhóm thực hiện dự án cam kết: Trí tuệ nhân tạo (AI) chỉ đóng vai trò công cụ hỗ trợ (lên ý tưởng sơ đồ, khởi tạo mã nguồn, soạn ngân hàng câu hỏi). AI không thay thế hoàn toàn năng lực tư duy và quá trình làm việc của sinh viên. Toàn bộ nội dung và mã nguồn cuối cùng đều đã được sinh viên trực tiếp kiểm duyệt, đối chiếu và tinh chỉnh."
+            </p>
+          </blockquote>
+        </div>
+
+        {/* Phần 2: Mô hình làm việc */}
+        <div className="bg-white/90 backdrop-blur-md rounded-2xl shadow-lg border border-white/30 p-6 sm:p-8" style={{ boxShadow: "0 10px 25px rgba(0, 0, 0, 0.2)" }}>
+          <div className="flex items-center gap-3 mb-6">
+            <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center">
+              <Layers className="w-5 h-5 text-blue-600" />
+            </div>
+            <h3 className="text-xl font-bold text-gray-800">2. Mô hình làm việc và Vai trò (Workflow)</h3>
+          </div>
+
+          {/* Workflow Diagram */}
+          <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+            {/* Step 1 */}
+            <div className="flex-1 w-full">
+              <div className="bg-amber-50/90 backdrop-blur-sm rounded-xl p-4 text-center border border-amber-200">
+                <div className="w-12 h-12 bg-amber-400 rounded-full flex items-center justify-center mx-auto mb-3">
+                  <span className="text-white font-bold">SV</span>
+                </div>
+                <h4 className="font-bold text-gray-800 mb-2">Người dùng (Sinh viên)</h4>
+                <p className="text-sm text-gray-600">Lên ý tưởng kịch bản, cung cấp tài liệu gốc, định hướng sản phẩm và chịu trách nhiệm kiểm duyệt cuối cùng.</p>
+              </div>
+            </div>
+
+            <ChevronRight className="w-6 h-6 text-white rotate-90 md:rotate-0" />
+
+            {/* Step 2 */}
+            <div className="flex-1 w-full">
+              <div className="bg-purple-50/90 backdrop-blur-sm rounded-xl p-4 text-center border border-purple-200">
+                <div className="w-12 h-12 bg-purple-500 rounded-full flex items-center justify-center mx-auto mb-3">
+                  <span className="text-white font-bold">G</span>
+                </div>
+                <h4 className="font-bold text-gray-800 mb-2">Gemini AI</h4>
+                <p className="text-sm text-gray-600">Cố vấn nội dung & Kiến trúc sư. Mô phỏng ý tưởng, tóm tắt tài liệu, biên soạn nội dung.</p>
+              </div>
+            </div>
+
+            <ChevronRight className="w-6 h-6 text-white rotate-90 md:rotate-0" />
+
+            {/* Step 3 */}
+            <div className="flex-1 w-full">
+              <div className="bg-cyan-50/90 backdrop-blur-sm rounded-xl p-4 text-center border border-cyan-200">
+                <div className="w-12 h-12 bg-cyan-500 rounded-full flex items-center justify-center mx-auto mb-3">
+                  <span className="text-white font-bold">C</span>
+                </div>
+                <h4 className="font-bold text-gray-800 mb-2">Claude AI</h4>
+                <p className="text-sm text-gray-600">Lập trình viên. Thực hiện hóa ý tưởng, viết mã nguồn React/Next.js theo prompt.</p>
+              </div>
+            </div>
+
+            <ChevronRight className="w-6 h-6 text-white rotate-90 md:rotate-0" />
+
+            {/* Step 4 */}
+            <div className="flex-1 w-full">
+              <div className="bg-green-50/90 backdrop-blur-sm rounded-xl p-4 text-center border border-green-200">
+                <div className="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-3">
+                  <span className="text-white font-bold">Ref</span>
+                </div>
+                <h4 className="font-bold text-gray-800 mb-2">Nguồn kiểm chứng</h4>
+                <p className="text-sm text-gray-600">Dữ liệu gốc và chân lý đối chiếu. Kiểm tra lại đáp án theo giáo trình.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Phần 3: Bảng minh bạch AI */}
+        <div className="bg-white/90 backdrop-blur-md rounded-2xl shadow-lg border border-white/30 p-6 sm:p-8" style={{ boxShadow: "0 10px 25px rgba(0, 0, 0, 0.2)" }}>
+          <div className="flex items-center gap-3 mb-6">
+            <div className="w-10 h-10 bg-emerald-100 rounded-full flex items-center justify-center">
+              <Star className="w-5 h-5 text-emerald-600" />
+            </div>
+            <h3 className="text-xl font-bold text-gray-800">3. Bảng minh bạch sử dụng AI (AI Usage Tracker)</h3>
+          </div>
+
+          <div className="overflow-x-auto">
+            <table className="w-full border-collapse">
+              <thead>
+                <tr className="bg-gray-100/90 backdrop-blur-sm">
+                  <th className="border border-gray-200/50 px-4 py-3 text-left font-bold text-gray-800">Tính năng</th>
+                  <th className="border border-gray-200/50 px-4 py-3 text-left font-bold text-gray-800">Công cụ AI</th>
+                  <th className="border border-gray-200/50 px-4 py-3 text-left font-bold text-gray-800">Mục đích & Prompt chính</th>
+                  <th className="border border-gray-200/50 px-4 py-3 text-left font-bold text-gray-800">Sinh viên tự chỉnh sửa</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr className="hover:bg-gray-50/80">
+                  <td className="border border-gray-200/50 px-4 py-3 text-gray-700 font-medium">
+                    Minigame Mở rương kho báu
+                  </td>
+                  <td className="border border-gray-200/50 px-4 py-3 text-gray-600">
+                    <span className="inline-block bg-purple-100 text-purple-700 px-2 py-1 rounded text-xs font-medium mr-1">Gemini</span>
+                    <span className="inline-block bg-cyan-100 text-cyan-700 px-2 py-1 rounded text-xs font-medium">Claude</span>
+                  </td>
+                  <td className="border border-gray-200/50 px-4 py-3 text-gray-600 text-sm">
+                    "Tạo 20 câu hỏi trắc nghiệm từ nội dung Cơ cấu xã hội, viết code random câu hỏi"
+                  </td>
+                  <td className="border border-gray-200/50 px-4 py-3 text-gray-600 text-sm">
+                    Tích hợp logic game over, kiểm tra lại đáp án theo giáo trình.
+                  </td>
+                </tr>
+                <tr className="hover:bg-gray-50/80">
+                  <td className="border border-gray-200/50 px-4 py-3 text-gray-700 font-medium">
+                    Flashcard Ôn tập
+                  </td>
+                  <td className="border border-gray-200/50 px-4 py-3 text-gray-600">
+                    <span className="inline-block bg-purple-100 text-purple-700 px-2 py-1 rounded text-xs font-medium mr-1">Gemini</span>
+                    <span className="inline-block bg-cyan-100 text-cyan-700 px-2 py-1 rounded text-xs font-medium">Claude</span>
+                  </td>
+                  <td className="border border-gray-200/50 px-4 py-3 text-gray-600 text-sm">
+                    "Chuyển đổi lý thuyết Liên minh Công-Nông thành 19 thẻ flashcard dạng lật 3D"
+                  </td>
+                  <td className="border border-gray-200/50 px-4 py-3 text-gray-600 text-sm">
+                    Tinh chỉnh CSS cho vừa màn hình điện thoại, rút gọn chữ trên thẻ.
+                  </td>
+                </tr>
+                <tr className="hover:bg-gray-50/80">
+                  <td className="border border-gray-200/50 px-4 py-3 text-gray-700 font-medium">
+                    Cấu trúc UI/UX Trang chủ
+                  </td>
+                  <td className="border border-gray-200/50 px-4 py-3 text-gray-600">
+                    <span className="inline-block bg-cyan-100 text-cyan-700 px-2 py-1 rounded text-xs font-medium">Claude</span>
+                  </td>
+                  <td className="border border-gray-200/50 px-4 py-3 text-gray-600 text-sm">
+                    "Tạo bố cục chia cột cho phần định nghĩa, chèn ảnh 5 lớp xã hội"
+                  </td>
+                  <td className="border border-gray-200/50 px-4 py-3 text-gray-600 text-sm">
+                    Thay đổi màu sắc theo bộ nhận diện của trường.
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        {/* Phần 4: Nguồn tài liệu */}
+        <div className="bg-white/90 backdrop-blur-md rounded-2xl shadow-lg border border-white/30 p-6 sm:p-8" style={{ boxShadow: "0 10px 25px rgba(0, 0, 0, 0.2)" }}>
+          <div className="flex items-center gap-3 mb-4">
+            <div className="w-10 h-10 bg-indigo-100 rounded-full flex items-center justify-center">
+              <MapPin className="w-5 h-5 text-indigo-600" />
+            </div>
+            <h3 className="text-xl font-bold text-gray-800">4. Nguồn tài liệu kiểm chứng</h3>
+          </div>
+          <div className="bg-indigo-50/90 backdrop-blur-sm rounded-xl p-6 border border-indigo-200">
+            <p className="text-gray-700 leading-relaxed">
+              Tất cả thông tin do AI sinh ra (đặc biệt là nội dung lý luận và câu hỏi trắc nghiệm) đều được sinh viên đối chiếu 100% với tài liệu chính thống:
+            </p>
+            <ul className="mt-4 space-y-2 text-gray-700">
+              <li className="flex items-start gap-2">
+                <CheckCircle2 className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" />
+                <span>Giáo trình <strong>Chủ nghĩa xã hội khoa học</strong> (Dành cho bậc đại học - Không chuyên lý luận chính trị) - Xuất bản năm 2019.</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <CheckCircle2 className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" />
+                <span>Các slide bài giảng của giảng viên phụ trách môn học.</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        {/* Footer */}
+        <div className="text-center text-black/70 text-sm py-4" style={{ textShadow: "0 1px 2px rgba(0,0,0,0.5)" }}>
+          <p>© 2026 - Dự án học tập môn MLN131 - Chủ nghĩa xã hội khoa học</p>
+        </div>
+      </div>
+    </div>
+  )
+}
+
 type GameState = "playing" | "won" | "lost"
 type LossReason = "quiz" | "password" | null
 
@@ -895,6 +1245,9 @@ function MinigameTab() {
   const [timer, setTimer] = useState(0)
   const [quizCompleted, setQuizCompleted] = useState(false)
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null)
+
+  // Tạo quiz ngẫu nhiên từ ngân hàng 20 câu
+  const [quizData] = useState(() => generateQuiz(questionsBank, 10))
 
   // Timer effect
   useEffect(() => {
@@ -1285,6 +1638,8 @@ export default function PoliticalLearningPlatform() {
       <main className="pt-16">
         {activeTab === "home" && <HomeTab setActiveTab={setActiveTab} />}
         {activeTab === "library" && <LibraryTab />}
+        {activeTab === "flashcard" && <FlashcardTab />}
+        {activeTab === "appendix" && <AppendixTab />}
         {activeTab === "minigame" && <MinigameTab />}
       </main>
     </div>
