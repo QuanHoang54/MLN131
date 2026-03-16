@@ -628,19 +628,26 @@ function HomeTab({ setActiveTab }: { setActiveTab: (tab: string) => void }) {
           {/* Hero Section */}
           <section className="py-20 sm:py-28 px-4">
             <div className="max-w-4xl mx-auto text-center">
+              {/* Animated gradient text effect */}
               <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 leading-tight uppercase drop-shadow-lg">
-                <div className="mb-2">LIÊN MINH CÔNG – NÔNG – TRÍ THỨC</div>
-                <div>VÀ KINH TẾ TƯ NHÂN: KẾ THỪA HAY THAY ĐỔI?</div>
+                <div className="mb-2 bg-gradient-to-r from-amber-200 via-yellow-400 to-amber-200 bg-clip-text text-transparent animate-pulse">
+                  LIÊN MINH CÔNG – NÔNG – TRÍ THỨC
+                </div>
+                <div className="bg-gradient-to-r from-amber-200 via-yellow-400 to-amber-200 bg-clip-text text-transparent">
+                  VÀ KINH TẾ TƯ NHÂN: KẾ THỪA HAY THAY ĐỔI?
+                </div>
               </h2>
-              <p className="text-lg sm:text-xl text-white/90 mb-8 max-w-2xl mx-auto text-pretty drop-shadow">
+              <p className="text-lg sm:text-xl text-white/90 mb-8 max-w-2xl mx-auto text-pretty drop-shadow animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
                 Tìm hiểu về cơ cấu xã hội - giai cấp và liên minh giai cấp, tầng lớp trong thời kỳ quá độ lên chủ nghĩa xã hội ở Việt Nam
               </p>
+              {/* Enhanced button with glow effect */}
               <button
                 onClick={() => setActiveTab("library")}
-                className="inline-flex items-center gap-2 bg-amber-400 hover:bg-amber-300 text-red-900 font-semibold px-8 py-4 rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1"
+                className="inline-flex items-center gap-2 bg-amber-400 hover:bg-amber-300 text-red-900 font-semibold px-8 py-4 rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 hover:shadow-amber-500/50 relative overflow-hidden group"
               >
-                Bắt đầu khám phá
-                <ArrowRight className="w-5 h-5" />
+                <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700"></span>
+                <span className="relative z-10">Bắt đầu khám phá</span>
+                <ArrowRight className="w-5 h-5 relative z-10 group-hover:translate-x-1 transition-transform" />
               </button>
             </div>
           </section>
@@ -648,22 +655,23 @@ function HomeTab({ setActiveTab }: { setActiveTab: (tab: string) => void }) {
           {/* Course Overview Section - 4 Cards with Glassmorphism */}
           <section className="py-16 px-4">
             <div className="max-w-5xl mx-auto">
-              {/* Section Title */}
-              <h3 className="text-3xl sm:text-4xl font-bold text-center mb-12 text-white drop-shadow-lg">
-                NỘI DUNG CHÍNH CỦA CHỦ ĐỀ
+              {/* Section Title with animated underline */}
+              <h3 className="text-3xl sm:text-4xl font-bold text-center mb-12 text-white drop-shadow-lg relative inline-block w-full">
+                <span className="relative z-10">NỘI DUNG CHÍNH CỦA CHỦ ĐỀ</span>
+                <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-32 h-1 bg-gradient-to-r from-transparent via-amber-400 to-transparent animate-pulse"></span>
               </h3>
 
-              {/* 4 Cards Grid */}
+              {/* 4 Cards Grid with staggered animations */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {/* Card 1: Cơ cấu xã hội - giai cấp */}
-                <div className="bg-white/10 backdrop-blur-md rounded-2xl p-6 shadow-xl border border-white/20 hover:bg-white/15 transition-all duration-300">
+                <div className="group bg-white/10 backdrop-blur-md rounded-2xl p-6 shadow-xl border border-white/20 hover:bg-white/15 transition-all duration-500 hover:scale-[1.02] hover:shadow-2xl hover:shadow-blue-500/20 cursor-pointer" style={{ animationDelay: '0.1s' }}>
                   <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 rounded-xl bg-blue-500/30 flex items-center justify-center flex-shrink-0 border border-blue-400/30">
+                    <div className="w-12 h-12 rounded-xl bg-blue-500/30 flex items-center justify-center flex-shrink-0 border border-blue-400/30 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
                       <Layers className="w-6 h-6 text-blue-300" />
                     </div>
                     <div>
-                      <h4 className="text-lg font-bold text-white mb-2">Cơ cấu xã hội - giai cấp</h4>
-                      <p className="text-white/70 text-sm leading-relaxed">
+                      <h4 className="text-lg font-bold text-white mb-2 group-hover:text-blue-200 transition-colors">Cơ cấu xã hội - giai cấp</h4>
+                      <p className="text-white/70 text-sm leading-relaxed group-hover:text-white/90 transition-colors">
                         Khái niệm, vị trí và 3 quy luật biến đổi tất yếu của cơ cấu xã hội - giai cấp gắn liền với sự chuyển dịch kinh tế trong thời kỳ quá độ.
                       </p>
                     </div>
@@ -671,14 +679,14 @@ function HomeTab({ setActiveTab }: { setActiveTab: (tab: string) => void }) {
                 </div>
 
                 {/* Card 2: Lý luận về Liên minh giai cấp */}
-                <div className="bg-white/10 backdrop-blur-md rounded-2xl p-6 shadow-xl border border-white/20 hover:bg-white/15 transition-all duration-300">
+                <div className="group bg-white/10 backdrop-blur-md rounded-2xl p-6 shadow-xl border border-white/20 hover:bg-white/15 transition-all duration-500 hover:scale-[1.02] hover:shadow-2xl hover:shadow-emerald-500/20 cursor-pointer" style={{ animationDelay: '0.2s' }}>
                   <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 rounded-xl bg-emerald-500/30 flex items-center justify-center flex-shrink-0 border border-emerald-400/30">
+                    <div className="w-12 h-12 rounded-xl bg-emerald-500/30 flex items-center justify-center flex-shrink-0 border border-emerald-400/30 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
                       <Handshake className="w-6 h-6 text-emerald-300" />
                     </div>
                     <div>
-                      <h4 className="text-lg font-bold text-white mb-2">Lý luận về Liên minh giai cấp</h4>
-                      <p className="text-white/70 text-sm leading-relaxed">
+                      <h4 className="text-lg font-bold text-white mb-2 group-hover:text-emerald-200 transition-colors">Lý luận về Liên minh giai cấp</h4>
+                      <p className="text-white/70 text-sm leading-relaxed group-hover:text-white/90 transition-colors">
                         Tính tất yếu khách quan của khối liên minh trên cả hai phương diện chính trị (giành chính quyền) và kinh tế (xây dựng đất nước).
                       </p>
                     </div>
@@ -686,14 +694,14 @@ function HomeTab({ setActiveTab }: { setActiveTab: (tab: string) => void }) {
                 </div>
 
                 {/* Card 3: Thực tiễn tại Việt Nam */}
-                <div className="bg-white/10 backdrop-blur-md rounded-2xl p-6 shadow-xl border border-white/20 hover:bg-white/15 transition-all duration-300">
+                <div className="group bg-white/10 backdrop-blur-md rounded-2xl p-6 shadow-xl border border-white/20 hover:bg-white/15 transition-all duration-500 hover:scale-[1.02] hover:shadow-2xl hover:shadow-amber-500/20 cursor-pointer" style={{ animationDelay: '0.3s' }}>
                   <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 rounded-xl bg-amber-500/30 flex items-center justify-center flex-shrink-0 border border-amber-400/30">
+                    <div className="w-12 h-12 rounded-xl bg-amber-500/30 flex items-center justify-center flex-shrink-0 border border-amber-400/30 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
                       <MapPin className="w-6 h-6 text-amber-300" />
                     </div>
                     <div>
-                      <h4 className="text-lg font-bold text-white mb-2">Thực tiễn tại Việt Nam</h4>
-                      <p className="text-white/70 text-sm leading-relaxed">
+                      <h4 className="text-lg font-bold text-white mb-2 group-hover:text-amber-200 transition-colors">Thực tiễn tại Việt Nam</h4>
+                      <p className="text-white/70 text-sm leading-relaxed group-hover:text-white/90 transition-colors">
                         Đặc điểm đa dạng, đan xen của các giai tầng (Công - Nông - Trí thức - Doanh nhân) và 5 phương hướng củng cố khối đại đoàn kết.
                       </p>
                     </div>
@@ -701,14 +709,14 @@ function HomeTab({ setActiveTab }: { setActiveTab: (tab: string) => void }) {
                 </div>
 
                 {/* Card 4: Kinh tế tư nhân - Kế thừa & Sáng tạo */}
-                <div className="bg-white/10 backdrop-blur-md rounded-2xl p-6 shadow-xl border border-white/20 hover:bg-white/15 transition-all duration-300">
+                <div className="group bg-white/10 backdrop-blur-md rounded-2xl p-6 shadow-xl border border-white/20 hover:bg-white/15 transition-all duration-500 hover:scale-[1.02] hover:shadow-2xl hover:shadow-purple-500/20 cursor-pointer" style={{ animationDelay: '0.4s' }}>
                   <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 rounded-xl bg-purple-500/30 flex items-center justify-center flex-shrink-0 border border-purple-400/30">
+                    <div className="w-12 h-12 rounded-xl bg-purple-500/30 flex items-center justify-center flex-shrink-0 border border-purple-400/30 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
                       <TrendingUp className="w-6 h-6 text-purple-300" />
                     </div>
                     <div>
-                      <h4 className="text-lg font-bold text-white mb-2">Kinh tế tư nhân - Kế thừa & Sáng tạo</h4>
-                      <p className="text-white/70 text-sm leading-relaxed">
+                      <h4 className="text-lg font-bold text-white mb-2 group-hover:text-purple-200 transition-colors">Kinh tế tư nhân - Kế thừa & Sáng tạo</h4>
+                      <p className="text-white/70 text-sm leading-relaxed group-hover:text-white/90 transition-colors">
                         Sự bùng nổ của doanh nhân không mâu thuẫn với lý luận Mác - Lênin. Việt Nam mở rộng nội hàm liên minh, chuyển mâu thuẫn thành động lực phát triển chung.
                       </p>
                     </div>
@@ -921,21 +929,31 @@ function FlashcardTab() {
   }
 
   return (
-    <div className="min-h-screen bg-[url('/quizlet.jpg')] bg-cover bg-center bg-fixed py-8 px-4">
-      <div className="max-w-2xl mx-auto">
-        {/* Header */}
+    <div className="min-h-screen bg-[url('/quizlet.jpg')] bg-cover bg-center bg-fixed py-8 px-4 relative overflow-hidden">
+      {/* Animated gradient overlay */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/40 pointer-events-none"></div>
+
+      <div className="max-w-2xl mx-auto relative z-10">
+        {/* Header with animated effects */}
         <div className="text-center mb-8">
-          <h2 className="text-2xl sm:text-3xl font-bold text-white mb-2 drop-shadow-lg">
+          <h2 className="text-2xl sm:text-3xl font-bold text-white mb-2 drop-shadow-lg animate-bounce" style={{ animationDuration: '3s' }}>
             Ôn tập kiến thức
           </h2>
-          <p className="text-gray-200">Click vào thẻ để lật • Kéo hoặc dùng nút để chuyển</p>
+          <p className="text-gray-200 animate-pulse" style={{ animationDuration: '2s' }}>Click vào thẻ để lật • Kéo hoặc dùng nút để chuyển</p>
         </div>
 
-        {/* Progress */}
+        {/* Enhanced Progress bar */}
         <div className="flex justify-center mb-6">
-          <span className="bg-white/20 backdrop-blur-md px-4 py-2 rounded-full shadow-lg text-white font-medium border border-white/30">
-            {progress}
-          </span>
+          <div className="bg-white/20 backdrop-blur-md px-6 py-3 rounded-full shadow-lg border border-white/30 flex items-center gap-3">
+            <span className="text-white font-bold text-lg">{currentIndex + 1}</span>
+            <div className="w-32 h-2 bg-white/20 rounded-full overflow-hidden">
+              <div
+                className="h-full bg-gradient-to-r from-amber-400 to-yellow-500 rounded-full transition-all duration-500 ease-out"
+                style={{ width: `${((currentIndex + 1) / flashcardData.length) * 100}%` }}
+              ></div>
+            </div>
+            <span className="text-white/80 font-medium">{flashcardData.length}</span>
+          </div>
         </div>
 
         {/* Flashcard */}
@@ -992,21 +1010,22 @@ function FlashcardTab() {
           </div>
         </div>
 
-        {/* Navigation Buttons */}
+        {/* Enhanced Navigation Buttons */}
         <div className="flex justify-center items-center gap-6 mt-8">
           <button
             onClick={goToPrev}
             disabled={currentIndex === 0}
-            className={`flex items-center gap-2 px-6 py-3 rounded-xl font-medium transition-all backdrop-blur-md border ${
+            className={`flex items-center gap-2 px-6 py-3 rounded-xl font-medium transition-all backdrop-blur-md border group ${
               currentIndex === 0
                 ? "bg-white/20 text-white/40 border-white/20 cursor-not-allowed"
-                : "bg-white/20 text-white border-white/40 hover:bg-white/30"
+                : "bg-white/20 text-white border-white/40 hover:bg-white/30 hover:scale-105"
             }`}
           >
-            <ChevronLeft className="w-5 h-5" />
-            Quay lại
+            <ChevronLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform" />
+            <span>Quay lại</span>
           </button>
 
+          {/* Animated dots */}
           <div className="flex gap-2">
             {flashcardData.map((_, idx) => (
               <button
@@ -1015,11 +1034,12 @@ function FlashcardTab() {
                   setCurrentIndex(idx)
                   setIsFlipped(false)
                 }}
-                className={`w-3 h-3 rounded-full transition-all ${
+                className={`rounded-full transition-all duration-300 ${
                   idx === currentIndex
-                    ? "bg-emerald-400 w-6"
-                    : "bg-white/40 hover:bg-white/60"
+                    ? "bg-emerald-400 w-8 shadow-lg shadow-emerald-500/50"
+                    : "bg-white/40 hover:bg-white/60 w-3 hover:w-4"
                 }`}
+                style={{ height: '12px' }}
               />
             ))}
           </div>
@@ -1027,14 +1047,14 @@ function FlashcardTab() {
           <button
             onClick={goToNext}
             disabled={currentIndex === flashcardData.length - 1}
-            className={`flex items-center gap-2 px-6 py-3 rounded-xl font-medium transition-all backdrop-blur-md border ${
+            className={`flex items-center gap-2 px-6 py-3 rounded-xl font-medium transition-all backdrop-blur-md border group ${
               currentIndex === flashcardData.length - 1
                 ? "bg-white/20 text-white/40 border-white/20 cursor-not-allowed"
-                : "bg-emerald-500/60 text-white border-emerald-400/50 hover:bg-emerald-500/80"
+                : "bg-emerald-500/60 text-white border-emerald-400/50 hover:bg-emerald-500/80 hover:scale-105 hover:shadow-lg hover:shadow-emerald-500/30"
             }`}
           >
-            Tiếp theo
-            <ChevronRight className="w-5 h-5" />
+            <span>Tiếp theo</span>
+            <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
           </button>
         </div>
       </div>
@@ -1381,23 +1401,25 @@ function MinigameTab() {
   if (gameState === "lost") {
     return (
       <div className="animate-fade-in-up py-8 px-4 bg-[url('/campus-hcm.png')] bg-cover bg-center bg-fixed bg-no-repeat min-h-screen">
-        <div className="max-w-lg mx-auto">
-          <div className="bg-white rounded-2xl shadow-xl p-8 text-center">
-            <div className="w-20 h-20 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-6">
+        {/* Animated gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-b from-red-900/60 via-transparent to-red-900/60 pointer-events-none"></div>
+        <div className="max-w-lg mx-auto relative z-10">
+          <div className="bg-white rounded-2xl shadow-2xl p-8 text-center animate-shake" style={{ animationDuration: '0.5s' }}>
+            <div className="w-20 h-20 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-6 animate-pulse">
               <AlertTriangle className="w-10 h-10 text-red-600" />
             </div>
-            <h2 className="text-2xl font-bold text-red-600 mb-4">THẤT BẠI!</h2>
-            <p className="text-gray-600 mb-6">
+            <h2 className="text-3xl font-bold text-red-600 mb-4 animate-bounce">THẤT BẠI!</h2>
+            <p className="text-gray-600 mb-6 text-lg">
               {lossReason === "quiz"
                 ? "Bạn đã trả lời sai quá 3 câu quiz!"
                 : "Bạn đã đoán sai mật mã 3 lần!"}
             </p>
             <p className="text-gray-500 mb-8">
-              Thời gian: {formatTime(timer)}
+              Thời gian: <span className="font-bold text-amber-600">{formatTime(timer)}</span>
             </p>
             <button
               onClick={resetGame}
-              className="inline-flex items-center gap-2 bg-red-600 hover:bg-red-700 text-white font-semibold px-6 py-3 rounded-xl transition-colors"
+              className="inline-flex items-center gap-2 bg-red-600 hover:bg-red-700 text-white font-semibold px-8 py-4 rounded-xl transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-red-500/30"
             >
               <RotateCcw className="w-5 h-5" />
               Chơi lại từ đầu
@@ -1414,46 +1436,54 @@ function MinigameTab() {
     const secs = timer % 60
     return (
       <div className="animate-fade-in-up py-8 px-4 bg-[url('/campus-hcm.png')] bg-cover bg-center bg-fixed bg-no-repeat min-h-screen">
-        <div className="max-w-lg mx-auto">
-          <div className="bg-white rounded-2xl shadow-xl p-8 text-center">
+        {/* Celebration overlay */}
+        <div className="absolute inset-0 bg-gradient-to-b from-amber-900/40 via-transparent to-amber-900/40 pointer-events-none"></div>
+        <div className="max-w-lg mx-auto relative z-10">
+          <div className="bg-white rounded-2xl shadow-2xl p-8 text-center animate-bounce-in" style={{ animationDuration: '0.8s' }}>
             {/* Rương kho báu đã mở */}
-            <div className="mb-6">
+            <div className="mb-6 relative">
               <img
                 src="/ruong1.png"
                 alt="Rương Kho Báu Đã Mở"
-                className="w-48 h-36 object-contain mx-auto"
+                className="w-48 h-36 object-contain mx-auto animate-bounce"
+                style={{ animationDuration: '2s' }}
               />
+              {/* Sparkle effects */}
+              <div className="absolute top-0 left-1/4 w-4 h-4 bg-yellow-400 rounded-full animate-ping"></div>
+              <div className="absolute top-4 right-1/4 w-3 h-3 bg-amber-400 rounded-full animate-ping" style={{ animationDelay: '0.3s' }}></div>
             </div>
 
-            <h2 className="text-2xl font-bold text-amber-600 mb-6">
+            <h2 className="text-3xl font-bold text-amber-600 mb-6 animate-pulse">
               MỞ KHÓA THÀNH CÔNG!
             </h2>
 
             {/* Logo FPT University */}
-            <div className="inline-block mb-6">
+            <div className="inline-block mb-6 relative">
               <img
                 src="/FPT_Education_logo.svg.png"
                 alt="FPT University"
-                className="w-64 h-64 object-contain mx-auto"
+                className="w-64 h-64 object-contain mx-auto hover:scale-110 transition-transform duration-500"
               />
+              {/* Glow effect */}
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -translate-x-full animate-shine"></div>
             </div>
 
-            <div className="bg-orange-100 rounded-xl p-4 mb-6">
+            <div className="bg-gradient-to-r from-orange-100 to-amber-100 rounded-xl p-4 mb-6 border border-orange-200">
               <p className="text-orange-800 font-medium">
-                Bí mật được hé lộ: <strong>08/09/2006</strong> chính là ngày
+                Bí mật được hé lộ: <strong className="text-amber-600">08/09/2006</strong> chính là ngày
                 thành lập trường Đại học FPT!
               </p>
             </div>
 
-            <div className="bg-gray-100 rounded-xl p-4 mb-6">
+            <div className="bg-gradient-to-r from-gray-100 to-gray-50 rounded-xl p-4 mb-6">
               <p className="text-gray-700">
-                Thời gian hoàn thành: <strong>{mins} phút {secs} giây</strong>
+                Thời gian hoàn thành: <strong className="text-emerald-600">{mins} phút {secs} giây</strong>
               </p>
             </div>
 
             <button
               onClick={resetGame}
-              className="inline-flex items-center gap-2 bg-amber-500 hover:bg-amber-600 text-white font-semibold px-6 py-3 rounded-xl transition-colors"
+              className="inline-flex items-center gap-2 bg-gradient-to-r from-amber-500 to-yellow-500 hover:from-amber-600 hover:to-yellow-600 text-white font-semibold px-8 py-4 rounded-xl transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-amber-500/30"
             >
               <RotateCcw className="w-5 h-5" />
               Chơi lại
