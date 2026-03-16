@@ -25,6 +25,7 @@ import {
   ChevronLeft,
   ChevronRight,
   FileText,
+  Film,
 } from "lucide-react"
 import { cn } from "@/lib/utils"
 
@@ -778,6 +779,12 @@ function HomeTab({ setActiveTab }: { setActiveTab: (tab: string) => void }) {
                     <ArrowRight className="w-4 h-4" /> Minigame
                   </button>
                 </li>
+                <li>
+                  <a href="https://youtu.be/1wK79HXe1kY" target="_blank" rel="noopener noreferrer" className="text-gray-200 hover:text-yellow-400 flex items-center gap-2 transition-colors">
+                    <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                    Video Bài Giảng
+                  </a>
+                </li>
               </ul>
             </div>
 
@@ -1113,7 +1120,20 @@ function AppendixTab() {
 
             <ChevronRight className="w-6 h-6 text-white rotate-90 md:rotate-0" />
 
-            {/* Step 4 */}
+            {/* Step 4 - NotebookLM */}
+            <div className="flex-1 w-full">
+              <div className="bg-orange-50/90 backdrop-blur-sm rounded-xl p-4 text-center border border-orange-200">
+                <div className="w-12 h-12 bg-orange-500 rounded-full flex items-center justify-center mx-auto mb-3">
+                  <Film className="w-5 h-5 text-white" />
+                </div>
+                <h4 className="font-bold text-gray-800 mb-2">NotebookLM</h4>
+                <p className="text-sm text-gray-600">Sản xuất Media. Phân tích tài liệu gốc, tự động tạo Audio/Video podcast thảo luận bài học.</p>
+              </div>
+            </div>
+
+            <ChevronRight className="w-6 h-6 text-white rotate-90 md:rotate-0" />
+
+            {/* Step 5 */}
             <div className="flex-1 w-full">
               <div className="bg-green-50/90 backdrop-blur-sm rounded-xl p-4 text-center border border-green-200">
                 <div className="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-3">
@@ -1188,6 +1208,20 @@ function AppendixTab() {
                   </td>
                   <td className="border border-gray-200/50 px-4 py-3 text-gray-600 text-sm">
                     Thay đổi màu sắc theo bộ nhận diện của trường.
+                  </td>
+                </tr>
+                <tr className="hover:bg-gray-50/80">
+                  <td className="border border-gray-200/50 px-4 py-3 text-gray-700 font-medium">
+                    Video Podcast/Tóm tắt bài học
+                  </td>
+                  <td className="border border-gray-200/50 px-4 py-3 text-gray-600">
+                    <span className="inline-block bg-orange-100 text-orange-700 px-2 py-1 rounded text-xs font-medium">NotebookLM</span>
+                  </td>
+                  <td className="border border-gray-200/50 px-4 py-3 text-gray-600 text-sm italic">
+                    Sử dụng tính năng Audio Overview phân tích tài liệu để tạo file âm thanh thảo luận bài học.
+                  </td>
+                  <td className="border border-gray-200/50 px-4 py-3 text-gray-600 text-sm bg-blue-50/30">
+                    Chỉnh sửa audio, ghép hình ảnh slide minh họa, thêm vietsub và biên tập thành video.
                   </td>
                 </tr>
               </tbody>
