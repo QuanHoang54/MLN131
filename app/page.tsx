@@ -1079,11 +1079,11 @@ function AppendixTab() {
             <h3 className="text-xl font-bold text-gray-800">2. Mô hình làm việc và Vai trò (Workflow)</h3>
           </div>
 
-          {/* Workflow Diagram */}
-          <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-            {/* Step 1 */}
+          {/* Workflow Diagram - Horizontal Sequential Layout */}
+          <div className="flex flex-col md:flex-row items-center justify-between gap-3 md:gap-2">
+            {/* Step 1: Sinh viên */}
             <div className="flex-1 w-full">
-              <div className="bg-amber-50/90 backdrop-blur-sm rounded-xl p-4 text-center border border-amber-200">
+              <div className="bg-amber-50/90 backdrop-blur-sm rounded-xl p-4 text-center border border-amber-200 shadow-sm hover:-translate-y-1 hover:shadow-lg transition-all duration-300">
                 <div className="w-12 h-12 bg-amber-400 rounded-full flex items-center justify-center mx-auto mb-3">
                   <span className="text-white font-bold">SV</span>
                 </div>
@@ -1092,11 +1092,12 @@ function AppendixTab() {
               </div>
             </div>
 
-            <ChevronRight className="w-6 h-6 text-white rotate-90 md:rotate-0" />
+            {/* Arrow 1 */}
+            <ChevronRight className="w-6 h-6 text-gray-400 rotate-90 md:rotate-0 flex-shrink-0" />
 
-            {/* Step 2 */}
+            {/* Step 2: Gemini AI */}
             <div className="flex-1 w-full">
-              <div className="bg-purple-50/90 backdrop-blur-sm rounded-xl p-4 text-center border border-purple-200">
+              <div className="bg-purple-50/90 backdrop-blur-sm rounded-xl p-4 text-center border border-purple-200 shadow-sm hover:-translate-y-1 hover:shadow-lg transition-all duration-300">
                 <div className="w-12 h-12 bg-purple-500 rounded-full flex items-center justify-center mx-auto mb-3">
                   <span className="text-white font-bold">G</span>
                 </div>
@@ -1105,11 +1106,12 @@ function AppendixTab() {
               </div>
             </div>
 
-            <ChevronRight className="w-6 h-6 text-white rotate-90 md:rotate-0" />
+            {/* Arrow 2 */}
+            <ChevronRight className="w-6 h-6 text-gray-400 rotate-90 md:rotate-0 flex-shrink-0" />
 
-            {/* Step 3 */}
+            {/* Step 3: Claude AI */}
             <div className="flex-1 w-full">
-              <div className="bg-cyan-50/90 backdrop-blur-sm rounded-xl p-4 text-center border border-cyan-200">
+              <div className="bg-cyan-50/90 backdrop-blur-sm rounded-xl p-4 text-center border border-cyan-200 shadow-sm hover:-translate-y-1 hover:shadow-lg transition-all duration-300">
                 <div className="w-12 h-12 bg-cyan-500 rounded-full flex items-center justify-center mx-auto mb-3">
                   <span className="text-white font-bold">C</span>
                 </div>
@@ -1118,11 +1120,12 @@ function AppendixTab() {
               </div>
             </div>
 
-            <ChevronRight className="w-6 h-6 text-white rotate-90 md:rotate-0" />
+            {/* Arrow 3 */}
+            <ChevronRight className="w-6 h-6 text-gray-400 rotate-90 md:rotate-0 flex-shrink-0" />
 
-            {/* Step 4 - NotebookLM */}
+            {/* Step 4: NotebookLM */}
             <div className="flex-1 w-full">
-              <div className="bg-orange-50/90 backdrop-blur-sm rounded-xl p-4 text-center border border-orange-200">
+              <div className="bg-orange-50/90 backdrop-blur-sm rounded-xl p-4 text-center border border-orange-200 shadow-sm hover:-translate-y-1 hover:shadow-lg transition-all duration-300">
                 <div className="w-12 h-12 bg-orange-500 rounded-full flex items-center justify-center mx-auto mb-3">
                   <Film className="w-5 h-5 text-white" />
                 </div>
@@ -1131,11 +1134,12 @@ function AppendixTab() {
               </div>
             </div>
 
-            <ChevronRight className="w-6 h-6 text-white rotate-90 md:rotate-0" />
+            {/* Arrow 4 */}
+            <ChevronRight className="w-6 h-6 text-gray-400 rotate-90 md:rotate-0 flex-shrink-0" />
 
-            {/* Step 5 */}
+            {/* Step 5: Nguồn kiểm chứng */}
             <div className="flex-1 w-full">
-              <div className="bg-green-50/90 backdrop-blur-sm rounded-xl p-4 text-center border border-green-200">
+              <div className="bg-green-50/90 backdrop-blur-sm rounded-xl p-4 text-center border border-green-200 shadow-sm hover:-translate-y-1 hover:shadow-lg transition-all duration-300">
                 <div className="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-3">
                   <span className="text-white font-bold">Ref</span>
                 </div>
